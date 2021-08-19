@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>HTML 속성</title>
+  </head>
+  <body>
+    <h1>HTML Attributes</h1>
+    <ul>
+      <li>모든 요소는 속성을 가짐</li>
+      <li>모든 요소는 id, class, title, style 속성을 가짐</li>
+      <li>모든 속성은 요소의 시작 태그에 작성</li>
+      <li>name="value"(or 'value' or value)로 작성(웹 표준 = "value"[오작동을 막기 위함])</li>
+      <li>style은 html의 속성으로 css를 의미</li>
+    </ul>
+    <hr>
+    <h2>a 하이퍼링크, 링크태그, Anchor태그, 하이퍼텍스트</h2>
+    <ol>
+      <li><a href="https://www.naver.com">NAVER</a></li>
+      <li>a 태그의 속성 href(Hypertext REFerence)는 value로 url을 가짐</li>
+      <li>ex) a href = "url" 이때 지정된 url 주소로 전송됨</li>
+      <li>
+        (기본 설정(default))
+        방문하지 않은 링크는 밑줄과 파란색<br>
+        방문한 링크는 밑줄과 보라색<br>
+        활성 링크는 밑줄과 빨간li
+      </li>
+      <li>
+        a 태그의 속성 target의 기본값(default)이 존재 "_self"<br>
+        _self: 클릭한 링크와 동일한 창(탭)에서 문서를 엶<br>
+        _blank: 새로운 창(탭)에서 문서를 엶<br>
+        <a href="https://www.naver.com" target="_self">_self NAVER</a><br>
+        <a href="https://www.naver.com" target="_blank">_target NAVER</a>
+      </li>
+      <li>
+        <!-- style은 요소를 꾸미는 역할 -->
+        <p style="color:blue; text-decoration:underline;"
+        onmousedown="this.style.color='red'; window.location.href='https://www.naver.com';"
+        onmouseup="this.style.color='blue';"
+        >a 태그 흉내내기</p>
+      </li>
+    </ol>
+  </body>
+</html>
