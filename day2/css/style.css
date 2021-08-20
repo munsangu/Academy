@@ -1,0 +1,14 @@
+
+body {
+  background-color: skyblue;
+  color: white;
+  font-family: serif;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+ul, ol, p {
+  border: 2px dashed red;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML Style CSS(Cascading Style Sheets)</title>
+  <style>
+    ul>li {
+      color: violet;
+    }
+    ul>li:first-child {
+      color: black !important;  /*!important -> 최우선 적용(가장 중요한 설정)*/
+    }
+    ul>li:last-child {
+      color: orange;
+    }
+  </style>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <h1>HTML Style CSS(Cascading Style Sheets)</h1>
+  <p>
+    Style CSS는 레이아웃, 색상, 텍스트, 크기, 이미지, 배경, RWD(Responsive Web Design) 등
+    html의 요소가 화면에 표시되는 모든 방식을 제어
+  </p>
+  <h2>CSS 구문(Syntax)</h2>
+  <ul>
+    <li style="color:blue;">Selector { property: "value"(X);}</li>
+    <li style="color:red;">Selector { property: value(O);}</li>
+    <li>선택자 {요소: 값; 요소: 값; 요소: 값; ...... }</li>
+    <li>tagname style="property:value; property:value;"</li>
+    <li> ex) h1 {color: red; background-color: gray; ...}</li>
+    <li>
+      <pre> h1 {
+      color: red;
+      background-color: gray;
+      color: black; // (나중에 선언한 것이 우선 적용)
+    }</pre>
+    </li>
+  </ul>
+  <h2>HTML < = CSS 적용 방법 3가지</h2>
+  <ol>
+    <li>외부 CSS: head 태그에 link 태그 사용(link rel="stylesheet" href="경로")</li>
+    <li>내부 CSS: head 태그에 style 태그 사용(style) selector {property:value; ...}(/style)</li>
+    <li>인라인 CSS: (tagname style="property:value;")(/tagname)</li>
+    <li>요소에 동일한 스타일이 다르게 제공 되었을 때 우선 순위</li>
+    <br> !important > 인라인 > 내부 > 외부
+  </ol>
+</body>
+
+</html>
