@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <h1>HTML 제출 양식(form)</h1>
+    <p>html 양식은 사용자 입력을 수집하기 위해 사용됨 ex) 설문 조사, 회원 가입, 로그인, 등</p>
+    <p>양식(form)에 입력한 복수의 데이터(parameter)는 처리를 위해 서버로 전송(method=post)됨</p>
+    <article>
+      <h2>form tag</h2>
+      <p>
+        form 요소는 사용자 입력을 위한 html 양식을 만드는 데 사용되며, 입력 양식을 1 개 이상 포함하는 container<br>
+        이때 입력 양식에는 text field, checkboxs, radio, submit, 등이 있음<br>
+        form과 입력 요소는 모두 name을 가지고, 이것(name)이 parameter의 이름으로 서버에 전송됨 ex)url?name=value&name2=value2<br>
+        document.forms["formName"]["inputName"]로 element를 참조할 수 있기 때문에 formName은 id처럼 유일한 값
+        (= document.forms.formName.inputName.value)  
+      </p>
+      <h3>form 태그 속성</h3>
+      <ul>
+        <li>action : 양식을 제출하는 url 위치</li>
+        <li>
+          method : 양식 데이터를 보낼 때 통신(HTTP) 방법
+          <ul>
+            <li>
+              method = "GET"(default) : url에 parameter를 「이름 / 값」에 추가하는 방법으로 안정성이 떨어짐
+              ex) url?name=value&name=value 
+            </li>
+            <li>
+              method = "POST" : 양식 parameter를 서버에 보낼 때 HTTP 포스트 트랜잭션에 추가해서 보냄(안전)
+            </li>
+          </ul>
+        </li>
+        <li>name : html 문서에서 유일한 이름이어야 함</li>
+        <li>autocomplete : 입력 양식의 자동 완성 (autocomplete ="on | off")</li>
+        <li>novalidate : 양식 제출 시, 유효성 검사를 하지 않도록 지정</li>
+        <li>
+          target : 양식 제출 시 받은 응답을 표시할 창의 위치(양식을 서버에 제출하면 그것을 처리한 뒤 이동할 페이지를 반환)<br>
+          양식을 서버에 제출하면 처리한 상태에 따라 이동할 페이지(응답 페이지)가 다름<br>
+          로그인 실패 -> 로그인 페이지 / 로그인 성공 -> 홈
+          <ul>
+            <li>_self(default) : 동일한 프레임(창)에 표시</li>
+            <li>_blank : 새 창이나 프레임에 표시</li>
+            <li>_parent : 상위 프레임에 표시</li>
+            <li>_top : 창 전체에 표시</li>
+          </ul>
+        </li>
+        <li>enctype : 양식 데이터를 서버에 제출할 때 인코딩 방식을 지정 (GET - url 인코딩이 고정, POST만 변경 가능)</li>
+      </ul>
+    </article>
+    <article>
+      <h2>입력 양식 요소</h2>
+      <p>
+        input은 입력 양식 요소의 대표, 여러 타입의 값을 전달할 수 있음<br>
+        모든 입력 양식 요소는 name과 value를 제출(submit) 할 때 url or 포스트 트랜젝션에 추가됨
+      </p>
+      <ul>
+        <li>
+          input : 다양한 타입이 존재하는 입력 요소
+          <input type="datetime-local">
+        </li>
+        <li>
+          textarea: 여러 줄의 텍스트 영역 제공
+          <textarea rows="2" cols="80">IRONMAN</textarea>
+        </li>
+        <li>
+          select: drop-down 목록 (optgroup: 목록을 다시 그룹으로 정의)
+            <select>
+              <optgroup label="Front-end">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="javascript">JAVASCRIPT</option>
+              </optgroup>
+              <optgroup label="Back-end">
+                <option value="java">JAVA</option>
+                <option value="python">PYTHON</option>
+                <option value="c">C</option>
+              </optgroup>
+            </select>
+        </li>
+        <li>
+          datalist : 입력하기 전에 미리 정의된 옵션 목록을 지정
+          <input list="program">
+          <datalist id="program">
+            <option value="HTML"></option>
+            <option value="CSS"></option>
+            <option value="JAVASCRIPT"></option>
+          </datalist>  
+        </li>
+        <li>button : 클릭이 가능한 버튼 <button>BUTTON</button></li>
+        <li>
+          label : 입력 요소에 label을 정의 (입력 요소.id === label.for or label>입력요소)
+          <label for="testCheck">test: </label>
+          <input id="testCheck" type="checkbox" name="test" value="0">
+          <label>test2: <input type="checkbox" name="test2" value="1"></label>
+        </li>
+      </ul>
+    </article> 
+    <article>
+      <h2>input 태그가 가지는 여러 타입의 input 요소</h2>
+      <ul>
+        <li>type = "text" : 한 줄 텍스트를 정의 <input type="text"></li>
+        <li>type = "search" : 검색 문자열을 입력하기 위한 필드 <input type="search"></li>
+        <li>type = "email" : e-mail을 입력하는 필드(제출 시 유효성 검사) <form><input type="email"><input type="submit"></form></li>
+        <li>type = "url" : url을 입력하는 필드(제출 시 유효성 검사) <form><input type="url"><input type="submit"></form></li> 
+        <li>type = "password" : 입력한 문자를 암호화 <input type="password"></li>
+        <li>type = "number" : 숫자를 입력하는 필드 <input type="number" step="5" value="0" min="0" max="100"></li>
+        <li>type = "button" : 클릭이 가능한 버튼 (JAVASCRIPT로 동작을 정의해야함) <input type="button" value="BUTTON"></li>
+        <li>type = "submit" : 서버 페이지(action)로 양식을 제출 <input type="submit"></li>
+        <li>type = "reset" : 같은 form 안에 있는 value 값들을 재설정 버튼 <input type="reset"></li>
+        <li>type = "range" : 범위를 제어하는 컨트롤 UI 제공 0 <input type="range" value = "50" step="5" min="0" max="100"> 100 </li>
+        <li>type = "checkbox" : 선택한 parameter만 전달<label><input type="checkbox" name="chbox1" value="parameter1">체크박스1</label><label><input type="checkbox" name="chbox2" value="parameter2">체크박스2</label></li>
+        <li>type = "radio" : 같은 parameter의 이름을 가진 복수의 항목 중 하나만 선택 가능 <label>사과<input type="radio" name="fruits"></label><label>귤<input type="radio" name="fruits"></label></li>
+        <li>type = "color" : 색상 선택기 <input type="color"></li>
+        <li>type = "datetime-local" : date picker UI 제공 ex) 2021-08-25 오후 05:08 <input type="datetime-local"></li>
+        <li>type = "date" :date picker UI 제공 ex) 2021-08-25 <input type="date"></li>
+        <li>type = "month" : date picker UI 제공  ex) 2021년 08월 <input type="month"></li>
+        <li>type = "week" : date picker UI 제공 ex) 2021, 34번째주 <input type="week"></li>
+        <li>type = "time" : date picker UI 제공 ex) 오후 05:10 <input type="time"></li>
+        <li>type = "file" : 파일 업로드 (탐색기 제공) <input type="file"></li>
+        <li>type = "hidden" : 숨겨질 parameter</li>
+      </ul>
+    </article> 
+    <article>
+      <h2>form 양식 선택자 TEST</h2>
+      <form name="memberInsert">
+        <fieldset>
+          <legend>회원 정보 수정</legend>
+          <p>num : <input type="num" name="num" readonly></p>
+          <p>id : <input type="text" name="id"></p>
+          <p>tel : <input type="text" name="tel"></p>
+          <p>grade : <input type="number" name="grade"min="0" max="100" ></p>
+          <p>gender : <label for="gender">MALE<input type="radio" name="gender" class="male">
+            FEMALE<input type="radio" name="gender" class="female"></label></p>
+          <p>실적 : <input type="number " min="0" max="100" name="score"></p>
+          <p>
+            <input type="reset" value="재설정">
+            <input type="button" value="수정">
+          </p>
+
+        </fieldset>
+      </form>
+      <h3>회원 리스트</h3>
+      <table style="text-align: center;" id="table">
+        <thead>
+          <tr>
+            <th>num</th>
+            <th>id</th>
+            <th>tel</th>
+            <th>grade(0~5)</th>
+            <th>gender(m,f)</th>
+            <th>실적(0~100)</th>
+            <th>수정</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01</td>
+            <td>id_aaaa</td>
+            <td>010-1111-1111</td>
+            <td>2</td>
+            <td>f</td>
+            <td>11</td>
+            <td>
+              <button type="button" 
+              data-num="01" 
+              data-id="id_aaaa" 
+              data-tel="010-1111-1111" 
+              data-grade="2" 
+              data-gender="f" 
+              data-score="11" onclick="doModify(this);">수정</button></td>
+          </tr>
+          <tr>
+            <td>02</td>
+            <td>id_bbbb</td>
+            <td>010-2222-2222</td>
+            <td>4</td>
+            <td>f</td>
+            <td>60</td>
+            <td><button type="button" 
+              data-num="02" 
+              data-id="id_bbbb" 
+              data-tel="010-2222-2222" 
+              data-grade="4" 
+              data-gender="f" 
+              data-score="60" onclick="doModify(this);">수정</button></td>
+          </tr>
+          <tr>
+            <td>03</td>
+            <td>id_cccc</td>
+            <td>010-3333-3333</td>
+            <td>3</td>
+            <td>m</td>
+            <td>70</td>
+            <td><button type="button" 
+              data-num="03" 
+              data-id="id_cccc" 
+              data-tel="010-3333-3333" 
+              data-grade="3" 
+              data-gender="m" 
+              data-score="70" onclick="doModify(this);">수정</button></td>
+          </tr>
+          <tr>
+            <td>04</td>
+            <td>id_dddd</td>
+            <td>010-4444-4444</td>
+            <td>5</td>
+            <td>m</td>
+            <td>80</td>
+            <td><button type="button" 
+              data-num="01" 
+              data-id="id_dddd" 
+              data-tel="010-4444-4444" 
+              data-grade="5" 
+              data-gender="m" 
+              data-score="80" onclick="doModify(this);">수정</button></td>
+          </tr>
+          <tr>
+            <td>05</td>
+            <td>id_eeee</td>
+            <td>010-5555-5555</td>
+            <td>5</td>
+            <td>f</td>
+            <td>80</td>
+            <td><button type="button" 
+              data-num="01" 
+              data-id="id_aaaa" 
+              data-tel="010-1111-1111" 
+              data-grade="2" 
+              data-gender="f" 
+              data-score="11" onclick="doModify(this);">수정</button></td>
+          </tr>   
+        </tbody>
+      </table>
+    </article>
+  </main>
+  <script>
+    let form = document.querySelector('[name="memberInsert"]')
+
+    function doModify(obj) {
+      let num = obj.getAttribute('data-num')
+      let id = obj.getAttribute('data-id')
+      let tel = obj.getAttribute('data-tel')
+      let grade = obj.getAttribute('data-grade')
+      let gender = obj.getAttribute('data-gender') 
+      let score = obj.getAttribute('data-score')
+      form.num.value = num;
+      form.id.value = id;
+      form.tel.value = tel;
+      form.grade.value = grade;
+      let femaleGender = form.getElementsByClassName('female')
+      let maleGender = form.getElementsByClassName('male')
+      if(gender === 'f'){
+        femaleGender[0].checked = true
+      } else {
+        maleGender[0].checked = true
+      }
+      form.score.value = score;
+    }
+    
+    let table = document.getElementById('table')
+  
+    
+    
+  </script>
+</body>
+</html>

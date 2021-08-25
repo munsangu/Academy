@@ -103,18 +103,123 @@
         window, mouse, keyboard, form(양식), clip board, drag, media event가 있음
       </p>
       <h3>mouse event</h3>
+      <p>
+        윈도우(브라우저)는 마우스의 이벤트가 발생할 때까지 기다림(리스너)
+        <br>거의 모든 요소에 마우스 이벤트를 추가할 수 있음
+      </p>
       <ul>
-        <li>onclick</li>
-        <li>ondblclick</li>
-        <li>onmousedown</li>
-        <li>onmouseup</li>
-        <li>onmousemove</li>
-        <li>onmouseout</li>
-        <li>onmouseover</li>
-        <li>onwheel</li>
+        <li onclick="this.style.backgroundColor='rgb(200,150,150)';">
+          onclick : 마우스로 요소를 클릭하면 이벤트 발생
+        </li>
+        <li ondblclick="this.style.color='rgb(200,150,150)';">
+          ondblclick : 마우스로 요소를 더블 클릭하면 이벤트 발생
+        </li>
+        <li onmousedown="this.style.border = '1px solid rgb(0, 0, 0)';">
+          onmousedown: 마우스 버튼(왼쪽 버튼, 오른쪽 버튼, 휠)으로 요소를 눌렀을 때 이벤트 발생
+        </li>
+        <li onmouseup="this.style.textDecoration='underline';">
+          onmouseup : 마우스 버튼(왼쪽 버튼, 오른쪽 버튼, 휠)으로 요소를 누른 후 놓을 때 이벤트 발생
+        </li>
+        <li onmouseover="this.style.textShadow = '1px 1px red';">
+          onmouseover : 마우스 포인터가 요소 위로 올라올 때 이벤트 발생
+        </li>
+        <li onmouseout="this.style.backgroundColor = 'rgb(50, 50, 50)'">
+          onmouseout : 요소에 놓인 포인터가 빠져나갈 때 이벤트 발생
+        </li>
+        <li>
+          onmousemove : 마우스 포인터가 요소 위를 이동할 때 이벤트 발생
+        </li>
+        <li>
+          onwheel : 요소 위에서 마우스 휠을 굴릴때 이벤트 발생
+        </li>
+        <h3>Mouse Event Ojbect(event)</h3>
+        <p>
+          마우스 이벤트가 발생하면 Mouse Event Object가 생성됨. 이 때 Event는 이벤트 시, 마우스의 정보(위치, 버튼)를 가지고 있음
+        </p>
+        <ul>
+          <li>
+            event.button : 이벤트 발생 시 누른 마우스 버튼을 반환(0: 왼쪽, 1:휠, 2:오른쪽), (마우스를 누르는 이벤트만 동작 default:0)
+            ex) 왼쪽만 동작 : if(e.button === 0) { }
+          </li>
+          <li>event.which : 이벤트 발생 시 누른 마우스 버튼을 반환(0:누르지 않음, 1: 왼쪽, 2:휠, 3:오른쪽)</li>
+          <li>event.buttons : 이벤트 발생 시 누른 마우스 버튼을 반환
+            (0:누르지 않음, 1: 왼쪽, 2:오른쪽, 3:왼쪽 + 오른쪽 4:휠, 5:왼쪽+휠, 6:오른쪽+휠,7:왼쪽+오른쪽+휠, 8:뒤로가기, 16:앞으로가기)
+            Safari에서는 지원하지 않음
+          </li>
+          <li>pageX, Y : 문서(html) 전체를 기준으로 마우스 포인터의 x,y 좌표를 반환</li>
+          <li>clientX, Y : 현재 창(브라우저)을 기준으로 마우스 포인터의 x,y 좌표를 반환</li>
+          <li>screenX, Y : 화면 전체(모니터)를 기준으로 마우스 포인터의 x,y 좌표를 반환</li>
+          <li>offsetX, Y : 대상 요소의 가장자리를 기준으로 마우스 포인터의 x,y 좌표를 반환</li>
+          <li>
+            <h4>예제</h4>
+            <div style="width: 100%; height: 500px; border:1px solid rgb(0, 0, 0);" onmousemove="showEventInfo(event, this)">
+              <p id="moveEventInfo" style="position: relative; left:0; top:0;"></p>
+              <!-- position: absolute ->문서의 상단을 절대 기준으로 잡고 left, top 위치로 이동 -->
+              <!-- position: relative -> 요소의 부모 요소를 절대 기준으로 잡고 left, top 위치로 이동 -->
+            </div>
+          </li>
+        </ul>
+      </ul>
+    </article>
+    <article>
+      <h2>양식(form) 이벤트</h2>
+      <p>form 요소와 form 요소 내부의 입력 요소(input)에 입력을 할 때 트리거되는 이벤트</p>
+      <ul>
+        <li>onfocus : 입력 요소가 focus를 받는 순간 <input type="text" onfocus="this.style.backgroundColor='rgb(0,255,0)'"></li>
+        <li>onblur : 입력 요소가 focus를 잃는 순간 <input type="text" onblur="this.style.backgroundColor='rgb(255,0,0)'"></li>
+        <li>test : <input type="text" onfocus="this.style.backgroundColor='rgb(0,255,0)'" onblur=this.style.backgroundColor='rgb(255,255,255)'></li>
+        <li>
+          onchange : 입력 요소의 value 값이 변경되고 focus를 잃는 순간
+          <input type="text" onchange="document.getElementById('changeTest').innerText = this.value" placeholder="입력하시오.">
+          value: <b id="changeTest"></b>
+        </li>
+        <li>
+          oninput : 입력 요소가 사용자의 입력을 받을 때 마다
+          <input type="text" oninput="document.getElementById('changeTest2').innerText = this.value">
+          value: <b id="changeTest2"></b>
+        </li>
+        <li>
+          oninvalid : 유효성 검사를 추가 (required, pattern)
+        </li>
+        <li>
+          onreset : 양식을 재설정(초기화, input type = "reset")
+        </li>
+        <li>
+          onsearch : type="search" 인 요소에서 Enter 또는 X 버튼을 누르면 발생
+        </li>
+        <li>
+          onselect : 입력 요소에서 일부 텍스트가 선택되면 실행(document.select():입력 요소의 value 선택)
+        </li>
+        <li>
+          onsubmit : 입력 양식을 제출할 때(submit 버튼을 누를 때)
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>window event</h2>
+      <p>window 객체에 대해 트리거 된 이벤트 (body 태그에 적용)</p>
+      <p>onload : 페이지가 로딩이 완료된 후 실행</p>
+    </article>
+    <article>
+      <h2>keyboard event</h2>
+      <ul>
+        <li>onkeydown : keyboard의 key를 누를 때 발생</li>
+        <li>onkeypress : keyboard의 key를 누를 때 발생</li>
+        <li>onkeyup: keyboard의 key를 놓을 때 발생</li>
       </ul>
     </article>
   </main>
+  <script>
+  // e 는 event 발생 시 브라우저가 생성하는 객체
+  // this는 이벤트가 발생한 요소를 참조(this -> 최상위에서 window, html에서 document, 특정 요소에서는 element)
+  function showEventInfo(e) {
+    let eventInfo ="";
+    eventInfo += "button num: "+e.button+"<br>buttons num: "+e.buttons+"<br>which num: "+e.which+"<br>page X:"+e.pageX + ", Y:"+e.pageY+"<br>client X:"+e.clientX + ", Y:"+e.clientY+"<br> screen X:"+e.screenX + ", Y:"+e.screenY+"<br> offset X:"+e.offsetX + ", Y:"+e.offsetY;
+    let  p = document.getElementById("moveEventInfo");
+    p.innerHTML = eventInfo;
+    p.style.left = e.offsetX + 'px'
+    p.style.top = e.offsetY + 'px'
+  }
+  </script>
 </body>
-
 </html>
