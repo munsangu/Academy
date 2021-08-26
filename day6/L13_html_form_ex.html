@@ -192,13 +192,13 @@ function multiChoice(multipleObj) {
     </p>
     <form>
       <label>
-        check1 : <input type="checkbox" name="test" value="box1" onchange="getCheckboxValue()">
+        check1 : <input type="checkbox" name="test" value="box1" onclick="allClear()" onchange="getCheckboxValue(this)">
       </label>
       <label>
-        check2 : <input type="checkbox" name="test" value="box2" onchange="getCheckboxValue()">
+        check2 : <input type="checkbox" name="test" value="box2" onclick="allClear()" onchange="getCheckboxValue(this)">
       </label>
       <label>
-        check3 : <input type="checkbox" name="test" value="box3" onchange="getCheckboxValue()">
+        check3 : <input type="checkbox" name="test" value="box3" onclick="allClear()" onchange="getCheckboxValue(this)">
       </label>
       <label>
         All select : <input type="checkbox" name="selectAll" value="all" onclick="allClick(this)" onchange="getCheckboxValue()">
@@ -217,66 +217,29 @@ function multiChoice(multipleObj) {
     })
   }
 
-  // function changeClick1(event) {
-  //   let check1 = document.querySelector('[value="box1"]')
-  //   let span = document.querySelector('#result')
+  function allClear() {
+    let allBoxes = document.querySelectorAll('[name="test"]')
+    let checked = document.querySelectorAll('input[name="test"]:checked')
+    let all = document.querySelector('[name="selectAll"]')
+    
+    if(allBoxes.length === checked.length)  {
+    all.checked = true;
+  }else {
+    all.checked = false;
+  }
+}
 
-  //   if(check1.checked) {
-  //       span.innerText = check1.value
-  //     } else {
-  //       span.innerText = " "
-  //     }
-  // }
- 
-
-  // function changeClick2() {
-  //   let check2 = document.querySelector('[value="box2"]')
-  //   let span = document.querySelector('#result')
-
-  //   if(check2.checked) {
-  //       span.innerText = check2.value
-  //     } else {
-  //       span.innerText = " "
-  //     }
-  // }
-
-  // function changeClick3() {
-  //   let check3 = document.querySelector('[value="box3"]')
-  //   let span = document.querySelector('#result')
-
-  //   if(check3.checked) {
-  //       span.innerText = check3.value
-  //     } else {
-  //       span.innerText = " "
-  //     }
-  // }
-
-  // function changeClickAll() {
-  //   let check1 = document.querySelector('[value="box1"]')
-  //   let check2 = document.querySelector('[value="box2"]')
-  //   let check3 = document.querySelector('[value="box3"]')
-  //   let check = document.querySelector('[value="all"]')
-  //   let span = document.querySelector('#result')
-
-  //   if(check.checked) {
-  //       span.innerText = check1.value +", " + check2.value + ", " + check3.value
-  //     } else {
-  //       span.innerText = " "
-  //     }
-  // }
-
-  function getCheckboxValue()  {
+  function getCheckboxValue(checkbox)  {
   let span = document.querySelector('#result')
   const query = 'input[name="test"]:checked';
-  const selectedEls = 
-      document.querySelectorAll(query);
+  const selectedEls = document.querySelectorAll(query);
   
   let result = '';
   selectedEls.forEach((el) => {
     result += el.value + ' ';
   });
-  
-  span.innerText= result;
+
+  span.innerText= result;   
 }
   
 
