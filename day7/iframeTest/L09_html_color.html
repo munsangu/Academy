@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>HTML Color</title>
+  <link rel="stylesheet" href="./css/style2.css">
+</head>
+<body>
+  <main>
+    <h1>HTML Color</h1>
+    <p>html은 색을 광원의 3색을 조합하는 원리로 표현</p>
+    <article>
+      <h2>RGB -> Red Green Blue</h2>
+      <p>RGB 색 모형은 빛의 3원색을 이용하여 색을 표현하는 방식 빨강(Red), 초록(Green), 파랑(Blue) 세 종류의 광원을 이용하여 색을 혼합, 색을 섞을수록 밝아지기 때문에 '가산혼합'이라고 함</p>
+      <p>빨간색, 초록색, 파란색은 0 ~ 255 사이의 값으로 색상의 강도를 나타내며 256 * 256 * 256 = 16,777,216개의 색을 표현할 수 있음</p>
+    </article>
+    <article>
+      <h2>color box 만들기</h2>
+      <div id="container" class="box_container">
+        <div class="box" style="background-color:rgb(255,0,0);"> 빨강 </div>
+        <!-- <div class="box1 box" style="background-color:rgb(255,0,0);" onclick="alert(this.style.backgroundColor:rgb(255,0,0));"> 빨강 </div> -->
+        <div class="box" style="background-color:rgb(255,100,0);"> 주황색 </div>
+        <div class="box" style="background-color:rgb(0,255,0);"> 초록색 </div>
+        <div class="box" style="background-color:rgb(0,0,255);"> 파란색 </div>
+        <div class="box" style="background-color:rgb(0,0,0);"> 검정색 </div>
+        <div class="box" style="background-color:rgb(255,255,255);"> 하얀색 </div>
+      </div>
+      <h2>16진수 Hexadecimal color #RRGGBB</h2>
+      <p>RGB의 0 ~ 255 를 16진수 (0 ~ f) * (0 ~ f) = 256으로 표현</p>
+      <p>RGB와 완전히 동일하며 브라우저는 HEX를 RGB로 변형해 저장함.</p>
+      <div id="hexColorBoxContainer" class="box_container">
+        <div class="box" style="background-color:#ff0000;"> 빨강 </div>
+        <!-- <div class="box1 box" style="background-color:rgb(255,0,0);" onclick="alert(this.style.backgroundColor:rgb(255,0,0));"> 빨강 </div> -->
+        <div class="box" style="background-color:#ff6300;"> 주황색 </div>
+        <div class="box" style="background-color:#00ff00;"> 초록색 </div>
+        <div class="box" style="background-color:#0000ff;"> 파란색 </div>
+        <div class="box" style="background-color:#000;"> 검정색 </div>
+        <div class="box" style="background-color:#fff;"> 하얀색 </div>
+      </div>
+      <script>
+        // javascript의 영역
+        // 검색해야함 domtree의 object가 있을 경우 꼭 해당요소 아래에 스크립트 생성
+        // html은 순차적 언어로 순서대로 object가 생성됨
+        const boxContainer = document.querySelector("#container")
+        const boxs = boxContainer.getElementsByClassName("box")
+        // boxs[0].onclick = function() {alert(this.style.backgroundColor);}
+        for(let box of boxs) {
+          box.onmousedown = function() {
+            this.style.opacity= "1";
+            this.style.borderWidth="10px";
+          }
+          box.onclick = function() {alert(this.style.backgroundColor)}
+          box.onmouseover = function() {
+            this.style.borderWidth ="1px";
+          }
+        }
+
+        // for(let i=0 ; i<boxs.length; i++) {
+        //   boxs[i].onclick = function() {alert(this.style.backgroundColor)}
+        // }
+      </script>
+    </article>
+    <hr />
+    <!-- 1. 모서리 둥글게 2. 사진 + 캡션 간격 3. 3개 나란히 정렬-->
+    <article>
+      <div class="gallery_container">
+          <div class="sw_gallery">
+            <img src="./image/rgb01.png" alt="rgb 가상 혼합 원리" width="200" height="200">
+            <div class="img_caption">rgb 가상 혼합 원리</div>
+          </div>
+          <div class="sw_gallery">
+            <img src="./image/rgb02.png" alt="rgb 큐브 모델" width="200" height="200">
+            <div class="img_caption">rgb 큐브 모델</div>
+          </div>
+          <div class="sw_gallery">
+            <img src="./image/rgba.png" alt="rgba 불투명도" width="200" height="200">
+            <div class="img_caption">rgba 불투명도</div>
+          </div>
+        </div>
+    </article>
+  </main>
+  </body>
+</html>

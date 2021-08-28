@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML SVG</title>
+</head>
+
+<body style="text-align: center;">
+  <h1>html SVG(Scalable Vector Graphics)</h1>
+  <p>xml 형식의 벡터 기반 그래픽을 정의하는 요소</p>
+  <ul>
+    <li>svg는 확장 가능한 웹용 벡터 그래픽을 나타냄</li>
+    <li>svg는 xml 형식으로 그래픽을 정의</li>
+    <li id="aniTest">svg는 모든 요소와 속성에 에니메이션 정의 가능 ex) 경과 시간에 따른 스타일이 변화는 것</li>
+    <li>svg는 W3C(html을 표준화하는 곳)에서 권장하는 태그(요소)</li>
+  </ul>
+  <div class="svg_container">
+    <svg width="100" height="100" style="border: 10px solid rgba(0,0,0,.2);">
+      <line x1="0" y1="0" x2="100" y2="100" stroke="rgba(200, 100,255,.2)" stroke-width="10" />
+      <line x1="100" y1="0" x2="0" y2="100" stroke="rgba(200, 100,255,.2)" stroke-width="10" />
+    </svg>
+  </div>
+  <article>
+    <h2>SVG 사각형 그리기 rect</h2>
+    <ul>
+      <li>width: 도형의 너비</li>
+      <li>height: 도형의 높이</li>
+      <li>stroke: 테두리 색</li>
+      <li>stroke-width: 테두리 두께</li>
+      <li>fill: 도형의 배경색</li>
+      <li>opacity: 도형의 투명도</li>
+      <li>x: 사각형의 왼쪽 상단 x좌표</li>
+      <li>y: 사각형의 왼쪽 상단 y좌표</li>
+      <li>rx: 사각형 모서리 굴곡의 x축 반지름</li>
+      <li>ry: 사각형 모서리 굴곡의 y축 반지름</li>
+    </ul>
+    <div class="svg_container">
+      <svg width="200" height="200" style="border: 10px solid rgba(0,0,0,.2);"> 
+        <rect x="50" y="50" rx="10" ry="10" width="100" height="100" stroke="yellow" stroke-width="3" fill="rgb(0,100,255)"></rect>
+        <rect x="80" y="80" width="150" height="150" stroke="red" stroke-width="1" fill="rgb(0,0,255)" opacity='.2'></rect>
+        <rect x="0" y="0" width="100" height="100" stroke="green" stroke-width="3" fill="rgba(0,0,255,.2)"></rect>
+      </svg>
+    </div>
+  </article>
+  <article>
+    <h2>SVG line</h2>
+    <ul>
+      <li>x1: (x축 좌표) 선의 시작</li>
+      <li>y1: (y축 좌표) 선의 시작</li>
+      <li>x2: (x축 좌표) 선의 끝</li>
+      <li>y2: (y축 좌표) 선의 끝</li>
+    </ul>
+    <div class="svg_container">
+      <svg width="200" height="200" style="border:1px solid"> 
+        <line x1="20" y1="20" x2="100" y2="100" style="stroke:rgb(100, 200, 255); stroke-width:20"></line>
+        <line x1="20" y1="180" x2="100" y2="100" style="stroke:rgba(255, 200, 100, .5); stroke-width:20"></line>
+        <line x1="180" y1="180" x2="100" y2="100" style="stroke:rgba(200, 255, 100, .5); stroke-width:20"></line>
+        <line x1="180" y1="20" x2="100" y2="100" style="stroke:rgba(100, 255, 100, .5); stroke-width:20"></line>
+      </svg>
+    </div>
+  </article>
+  <article>
+    <h2>SVG circle</h2>
+    <ul>
+      <li>cx: (x축 좌표) 원 중심(default: 0) </li>
+      <li>cy: (y축 좌표) 원 중심(default: 0)</li>
+      <li>r: 원 반지름</li>
+    </ul>
+    <svg width="200" height="200" style="border:1px solid">
+      <circle cx="70" cy="70" r="70" fill="rgba(255,0,0,.5)" stroke="rgb(255,0,0)" stroke-width="2"></circle>
+      <circle cx="130" cy="70" r="70" fill="rgba(0,255,0,.5)" stroke="rgb(0,255,0)" stroke-width="2"></circle>
+      <circle cx="100" cy="130" r="70" fill="rgba(0,0,255,.5)" stroke="rgb(0,0,255)" stroke-width="2"></circle>
+    </svg>
+  </article>
+  <article>
+    <h2>SVG ellipse </h2>
+    <ul>
+      <li>cx: 타원의 중심 x 좌표</li>
+      <li>cy: 타원의 중심 y 좌표</li>
+      <li>rx: 수평 반경 </li>
+      <li>ry: 수직 반경 </li>
+    </ul>
+    <svg width="200" height="200" style="border:1px solid">
+      <ellipse cx="100" cy="100" rx="100" ry="50" opacity=".5"></ellipse>
+      <ellipse cx="100" cy="100" rx="50" ry="100" opacity=".5"></ellipse>
+    </svg>
+  </article>
+  <article>
+    <h2>SVG polygon 다각형</h2>
+    <svg width="200" height="200" style="border:1px solid">
+      <polygon points="50,50 150,50 50,150 100,0 150,150" style="stroke:red; fill:yellow;"></polygon> 
+      <text x="60" y="100">
+        Polygon Star
+        <tspan x="100" y="110">points: 50,50 150,50 50,150 100,0 150,150</tspan>
+        <a xlink:href="">
+          <tspan x="100" y="120" fill="red">a test</tspan>
+        </a>  
+      </text>
+    </svg>
+  </article>  
+  <script>
+    let fontSize = 0
+    console.log(fontSize)
+    let fontAni = window.setInterval(() => {
+      document.getElementById("aniTest").style.fontSize = ++fontSize + "px"
+      if (fontSize === 20) {
+        window.clearInterval(fontAni)
+      }
+    }, 100)
+  </script>
+</body>
+
+</html>
