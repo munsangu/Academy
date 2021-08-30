@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Variable</title>
+</head>
+
+<body style="text-align: center;">
+  <main>
+    <h1>Javascript의 변수(Variable)</h1>
+    <p>
+      모든 프로그래밍 언어는 데이터 참조하기 위해 변수를 사용
+      <br>이 때, 참조하는 데이터가 변할 수 있어서 변수 ex) let a = "Hello" let a = 200 console.log(a) // 200
+    </p>
+    <article>
+      <h2>Javascript의 변수와 상수</h2>
+      <ul>
+        <li>var : Javascript 태초의 변수, 함수 지향 언어의 특징을 가진 블럭이 모호한 상태(사용하지 않음) </li>
+        <li>let : ES6에 탄생한 변수, Class 추가와 함께 블럭의 구분을 명확하게 함(var 대신 사용)</li>
+        <li>
+          const : 변수가 아닌 상수, 선언과 동시에 데이터를 참조해야 하고 그 데이터를 변경하는 것은 안됨
+          <br>참조하는 데이터의 상태를 변경할 수 있음
+        </li>
+        <li></li>
+        <li></li>
+      </ul>
+    </article>      
+<script>
+  var a;
+  var a = 10; // a.1
+  var a = 15; // a.2 오류 아님
+  let b = 20; // b.1
+  // let b = 25 오류
+  // const COLOR_RED; 오류
+  const PI = 3.14; // 바뀌지 않는 값을 선언할 때 사용
+  const COLOR_LIST ="(255,0,0)"; // 선언과 동시에 입력, 바뀔 수 없음
+  const COLOR_LIST = ["(255,0,0)","(0,255,0)","(0,0,255)"]
+  COLOR_LIST = ["(255,0,0)","(0,255,0)"]; //오류
+  COLOT_LIST[0] = "(200,0,0)" // 가능
+  function test() {
+    var a = 30; // a.3 -> 1, 2, 3은 같은 a
+    let b = 40; // b.2 -> 1, 2는 다른 b 각 블럭 ({}), b는 유일하고 다시 선언 될 수 없음
+  }
+</script>
+    <article>
+      <h2>변수의 식별자(이름)</h2>
+      <p>
+        프로그래밍에서 식별자 즉, 이름 짓기는 중요 대체로 유지 보수에 용의하기 위해 약속된 방식이지만 
+        이름이 오류를 만들 수 있어, 오류가 있는 코드를 배포하는 Javascript 특성상 이름 짓기가 더 중요
+        ex) let var = 10; (예약어를 변수로 사용한 오류) 
+      </p>
+      <ul>
+        <li>변수 이름은 문자, 숫자, 밑줄, $가 포함될 수 있음</li>
+        <li>변수는 숫자로 시작하는 것을 권장하지 않음 ex) let 1num; (X) let num1; (O)</li>
+        <li>
+          변수의 이름은 구체적이어야하고 문자와 문자의 결합을 camelCase, snake_case, PascalCase로 함
+          <br>ex) memNum, userId / mem_num, user_id / Mem_Num, User_Id 
+        </li>
+        <li>상수(const)의 이름은 모두 대문자이고 _표기함(ex) COLOR_RED)</li>
+        <li>이름은 대소문자를 구분(num !== Num !== NUM) </li>
+        <li>예약어는 변수 이름으로 사용할 수 없음(function, var, let, Number)</li>
+      </ul>
+    </article>
+    <article>
+      <h2>식별자에 그 밖의 규칙(권장 사항)</h2>
+      <ul>
+        <li>읽고 이해할 수 있는 이름을 사용(userName, userId, colorName ...)</li>
+        <li>a, b, c, i와 같은 짧은 이름은 사용하지 않는 것이 좋음 단, 구조적으로 변수명이 명확할 때에는 사용 가능 <br>ex)for(let i = 0 ; i < 5 ; i++ ){}(i = index) </li>
+        <li>소속된 팀의 규칙을 따를 것(userID, memberNum) (X) / (userId, userNum) (O)</li>
+      </ul>
+    </article>
+  </main>
+</body>
+
+</html>
