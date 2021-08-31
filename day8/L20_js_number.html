@@ -213,16 +213,34 @@
         let span = document.getElementById("ageTest")
 
         function birthYear(e) {
-          let year = e.target.value
-          if (Number.isNaN(year*1) === true) {
+          let year = (e.target.value)*1
+          if (Number.isNaN(year) === true) {
             span.innerText = "숫자만 입력하시오!"
           } else if (year < 1 || year > 120) {
             span.innerText = "1 ~ 120 사이의 숫자만 입력하시오."
           } else {
-            span.innerText = `당신이 태어난 해 : ${2021-year+1} 년`
+            span.style.color = "blue"
+            let thisYear = new Date().getFullYear()
+            span.innerText = `당신이 태어난 해 : ${thisYear-year+1} 년`
           }
         }
       </script>
+      <li>
+        <input type="text" name="age" placeholder="How old are you?" onkeydown="onlyNum(event, this)">
+        <script>
+          function onlyNum(e, thisEl) {
+            // console.log(e.keyCode) // 0의 keyCode: 48 ~ 9의 keyCode: 57
+            console.log(thisEl)
+            // let eVal = e.target.value // 이벤트가 발생하기 전 타겟 요소의 value
+            // let keyCode = e.keyCode
+            // if(keyCode >= 48 && keyCode <= 57) {
+            //   console.log("숫자만 입력 완료")
+            // } else {
+            //   thisEl.value = eVal;
+          //   }
+          }
+        </script>
+      </li>
     </ul>
   </article>
 </body>
