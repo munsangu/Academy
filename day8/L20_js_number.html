@@ -98,7 +98,8 @@
       </li>
     </ul>
     <hr>
-    <p>+ 연산을 제외한 나머지 연산은 문자열이 나올 시 자동 형 변환을 시도함 <br>만약에 형변환되지 않으면, 숫자가 아니라는 뜻의 NaN를 출력함<br>false와 null은 0으로 변환되고, NaN과 undefined는 NaN이 됨</p>
+    <p>+ 연산을 제외한 나머지 연산은 문자열이 나올 시 자동 형 변환을 시도함 <br>만약에 형변환되지 않으면, 숫자가 아니라는 뜻의 NaN를 출력함<br>false와 null은 0으로 변환되고, NaN과
+      undefined는 NaN이 됨</p>
     <ul style="list-style: none;">
       <li>10 * 20 : <script>
           document.write(10 * 20)
@@ -129,9 +130,9 @@
         </script>
       </li>
       <li>1 * undefined : <script>
-        document.write(1 * undefined)
-      </script>
-    </li>
+          document.write(1 * undefined)
+        </script>
+      </li>
       <li>1 * null : <script>
           document.write(1 * null)
         </script>
@@ -141,7 +142,7 @@
         </script>
       </li>
     </ul>
-    
+
   </article>
   <article>
     <h2>NaN(Not a Number)</h2>
@@ -149,35 +150,56 @@
     <ul style="list-style: none;">
       <li>
         Number("100") : data를 숫자형으로 변환 ->
-        <script>document.write(Number("100"))</script>
+        <script>
+          document.write(Number("100"))
+        </script>
       </li>
       <li>
         Number("안녕") : data를 숫자형으로 변환 ->
-        <script>document.write(Number("안녕"))</script>
+        <script>
+          document.write(Number("안녕"))
+        </script>
       </li>
       <li>
         Number(null) : data를 숫자형으로 변환 ->
-        <script>document.write(Number(null))</script>
+        <script>
+          document.write(Number(null))
+        </script>
       </li>
       <li>
         Number(undefined) : data를 숫자형으로 변환 ->
-        <script>document.write(Number(undefined))</script>
+        <script>
+          document.write(Number(undefined))
+        </script>
       </li>
       <li>
         Number(true) : data를 숫자형으로 변환 ->
-        <script>document.write(Number(true))</script>
+        <script>
+          document.write(Number(true))
+        </script>
       </li>
       <li>
         Number(false) : data를 숫자형으로 변환 ->
-        <script>document.write(Number(false))</script>
+        <script>
+          document.write(Number(false))
+        </script>
       </li>
       <li>
-        isNaN("100") -> <script>document.write(Number(isNaN("100")))</script> <!--// 0: false 1: true-->
+        isNaN("100") -> <script>
+          document.write(Number(isNaN("100")))
+        </script>
+        <!--// 0: false 1: true-->
       </li>
       <li>
-        isNaN("백") -> <script>document.write(Number(isNaN("백")))</script> <!--// 0: false 1: true-->
+        isNaN("백") -> <script>
+          document.write(Number(isNaN("백")))
+        </script>
+        <!--// 0: false 1: true-->
       </li>
-      <li>Boolean(NaN) : <script>document.write(Boolean(NaN))</script></li>
+      <li>Boolean(NaN) : <script>
+          document.write(Boolean(NaN))
+        </script>
+      </li>
     </ul>
   </article>
   <article>
@@ -187,19 +209,20 @@
         <input type="text" name="age" placeholder="How old are you?" onchange="birthYear(event)">
         <span id="ageTest" style="color:red"></span>
       </li>
-<script>
-  let span = document.getElementById("ageTest")
+      <script>
+        let span = document.getElementById("ageTest")
 
-  function birthYear(e) {  
-    if(isNaN(e.target.value) == true){
-      alert("숫자만 입력하시오.")
-    } else if(e.target.value < 1 || e.target.value > 120) {
-      alert("1부터 120 사이의 숫자만 입력하시오.")
-    } else {
-      span.innerText =  "당신이 태어난 해 : "+(2021 - e.target.value + 1)+"년"
-    } 
-  }
-</script>
+        function birthYear(e) {
+          let year = e.target.value
+          if (Number.isNaN(year*1) === true) {
+            span.innerText = "숫자만 입력하시오!"
+          } else if (year < 1 || year > 120) {
+            span.innerText = "1 ~ 120 사이의 숫자만 입력하시오."
+          } else {
+            span.innerText = `당신이 태어난 해 : ${2021-year+1} 년`
+          }
+        }
+      </script>
     </ul>
   </article>
 </body>

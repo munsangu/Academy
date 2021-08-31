@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript String method</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      width: 90%;
+      height: 100px;
+      font-size: 14px;
+    }
+
+    table tr {
+      border: 1px solid black;
+    }
+
+    table td,
+    th {
+      border: 1px solid black;
+    }
+
+    table th {
+      background-color: #2f2f2f;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Javascript String.method()</h1>
+  <p>문자열은 유저에게 전달하는 데이터로 웹 상에서 가장 많이 사용됨 따라서 문자열을 다루는 함수가 많이 존재</p>
+  <table>
+    <thead>
+      <tr>
+        <th>method</th>
+        <th>설명</th>
+        <th>예시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>toUpperCase() / toLowerCase()</td>
+        <td>대문자 / 소문자로 변환</td>
+        <td>
+          "ironman".toUppecase() :
+          <script>
+            document.write("ironman".toUpperCase())
+          </script><br>
+          "IRONMAN".toLowerCase() :
+          <script>
+            document.write("ironman".toLowerCase())
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>trim()</td>
+        <td>앞뒤 공백 제거</td>
+        <td>
+          " IronMan ".trim() :
+          <script>
+            document.write("     IronMan        ".trim())
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td>charAt() / charCodeAt()</td>
+        <td>문자열에서 특정 인덱스에 위치하는 유니코드 단일문자를 반환 / 주어진 인덱스에 대한 UTF-16 코드를 출력</td>
+        <td>
+          "ABCDE".charCodeAt(0) :
+          <script>
+            document.write("ABCDE".charCodeAt(0))
+          </script><br>
+          "ABCDE".charAt(0) :
+          <script>
+            document.write("ABCDE".charAt(0))
+          </script><br>
+          "ABCDE"[0] :
+          <script>
+            document.write("ABCDE" [0])
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>slice()</td>
+        <td>문자열의 일부를 추출하면서 새로운 문자열을 반환</td>
+        <td>
+          <!-- 양수로 시작시 왼쪽부터 0 1 2 ... -->
+          <!-- 음수로 시작시 오른쪽부터 0 -1 -2 ... -->
+          "I'm IronMan".slice('I'm') : 
+          <script>
+            document.write("I'm IronMan".slice(0,3))
+          </script><br>
+          "I'm IronMan".slice('IronMan') : 
+          <script>
+            document.write("I'm IronMan".slice(4))
+          </script><br>
+          "I'm IronMan".slice('IronMan') : 
+          <script>
+            document.write("I'm IronMan".slice(-7))
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td>
+          <script>
+            document.write()
+          </script>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
