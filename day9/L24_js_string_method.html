@@ -99,72 +99,162 @@
         <td>
           <!-- 양수로 시작시 왼쪽부터 0 1 2 ... -->
           <!-- 음수로 시작시 오른쪽부터 0 -1 -2 ... -->
-          "I'm IronMan".slice('I'm') : 
+          "I'm IronMan".slice(0,3) :
           <script>
-            document.write("I'm IronMan".slice(0,3))
+            document.write("I'm IronMan".slice(0, 3))
           </script><br>
-          "I'm IronMan".slice('IronMan') : 
+          "I'm IronMan".slice(4) :
           <script>
             document.write("I'm IronMan".slice(4))
           </script><br>
-          "I'm IronMan".slice('IronMan') : 
+          "I'm IronMan".slice(-7) :
           <script>
             document.write("I'm IronMan".slice(-7))
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>substring()</td>
+        <td>slice()와 동일한 기능이나 양수 index만 사용 가능</td>
+        <td>
+          "I'm IronMan".substring(4) :
+          <script>
+            document.write("I'm IronMan".substring(4))
           </script>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>substr()</td>
+        <td>일부 문자 추출, 시작점부터 길이까지 추출</td>
         <td>
+          "I'm IronMan".substr(0,3) :
           <script>
-            document.write()
+            document.write("I'm IronMan".substr(0, 3))
+          </script>
+          "I'm IronMan".substr(-12,4) :
+          <script>
+            document.write("I'm IronMan".substr(-12, 4))
           </script>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>startsWith()</td>
+        <td>특정 문자열로 시작하는지 여부 (결과값: Boolean)</td>
         <td>
+          "I'm IronMan".startsWith("I") :
           <script>
-            document.write()
-          </script>
+            document.write("I'm IronMan".startsWith("I"))
+          </script><br>
+          "I'm IronMan".startsWith("I'm") :
+          <script>
+            document.write("I'm IronMan".startsWith("I'm"))
+          </script><br>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>endsWith()</td>
+        <td>끝에서부터 특정 문자열로 끝나는지 여부 (결과값: Boolean)</td>
         <td>
+          "I'm IronMan".endsWith("n") :
           <script>
-            document.write()
-          </script>
+            document.write("I'm IronMan".endsWith("Man"))
+          </script><br>
+          "I'm IronMan".endsWith("Iron") :
+          <script>
+            document.write("I'm IronMan".endsWith("Iron"))
+          </script><br>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>includes()</td>
+        <td>(위치 지정 가능) 특정 문자열의 포함 여부 검색 (결과값: Boolean)</td>
         <td>
+          "I'm IronMan".includes("Iron") :
           <script>
-            document.write()
-          </script>
+            document.write("I'm IronMan".includes("Iron"))
+          </script><br>
+          "I'm IronMan".includes("Thor") :
+          <script>
+            document.write("I'm IronMan".includes("Thor"))
+          </script><br>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>indexOf()</td>
+        <td>주어진 값과 일치하는 첫번째 index를 반환(일치하는 값이 없으면 -1)</td>
         <td>
+          "I'm IronMan".indexOf("Iron") :
           <script>
-            document.write()
-          </script>
+            document.write("I'm IronMan".indexOf("Iron"))
+          </script><br>
+          "I'm IronMan".indexOf("Thor") :
+          <script>
+            document.write("I'm IronMan".indexOf("Thor"))
+          </script><br>
         </td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
+        <td>lastIndexOf()</td>
+        <td>주어진 값과 일치하는 부분을 역순으로 탐색해 최초로 마주치는 index를 반환(일치하는 값이 없으면 -1)</td>
         <td>
+          "I'm IronMan".lastIndexOf("I") :
           <script>
-            document.write()
-          </script>
+            document.write("I'm IronMan".lastIndexOf("I"))
+          </script><br>
+          "I'm IronMan".lastIndexOf("I",0) :
+          <script>
+            document.write("I'm IronMan".lastIndexOf("I", 0))
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>split()</td>
+        <td>지정한 구분자를 이용하여 여러 개의 문자열로 나누어 배열로 만듦</td>
+        <td>
+          let marvel = "Ironman, Hurk, Thor, Captain, Deadpool"<br>
+          marvel.split(",") :
+          <script>
+            let marvel = "Ironman, Hurk, Thor, Captain, Deadpool"
+            document.write(marvel.split(","))
+            //console.log(marvel.split(",")) // ["Ironman", " Hurk", " Thor", " Captain", " Deadpool"]
+          </script><br>
+          marvel.split(",", 2) :
+          <script>
+            document.write(marvel.split(",", 2))
+            // console.log(marvel.split(",",2)) // ["Ironman", " Hurk"]
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>replace()</td>
+        <td>
+          어떤 패턴에 일치하는 일부 또는 모든 부분이 교체된 새로운 문자열을 반환
+          <br>(기존 데이터에는 변화가 없음) x !== x.replace()
+        </td>
+        <td>
+          let marvel = "Ironman, Hurk, Thor, Captain, Deadpool"<br>
+          marvel.replace("Deadpool", "Hwak-eye") :
+          <script>
+            document.write(marvel.replace("Deadpool", "Hwak-eye"))
+            // console.log(marvel) //Ironman, Hurk, Thor, Captain, Deadpool
+            // console.log(marvel.replace("Deadpool", "Hwak-eye")) // Ironman, Hurk, Thor, Captain, Hwak-eye
+          </script><br>
+        </td>
+      </tr>
+      <tr>
+        <td>replaceAll()</td>
+        <td>
+          어떤 패턴에 일치하는 값을 모든 부분이 교체된 새로운 문자열을 반환
+          <br>(기존 데이터에는 변화가 없음) x !== x.replaceAll()
+        </td>
+        <td>
+          let marvel = "Ironman, Hurk, Thor, Captain, Deadpool"<br>
+          marvel.replaceAll("Deadpool", "Hwak-eye") :
+          <script>
+            document.write(marvel.replaceAll(",", " -"))
+            // console.log(marvel) //Ironman, Hurk, Thor, Captain, Deadpool
+            // console.log(marvel.replaceAll(",", " -")) // Ironman - Hurk - Thor - Captain - Deadpool
+          </script><br>
         </td>
       </tr>
     </tbody>

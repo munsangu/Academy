@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Array method</title>
+  <style>
+    body {
+      text-align: center;
+    }
+
+    ul {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>Javascript Array Method</h1>
+    <script>
+      const a = ["b", "c", "a", "z", "f", "e", "h"]
+    </script>
+    <p>const a = ["b", "c", "a", "z", "f", "e", "h"]</p>
+    <ul>
+      <li>
+        a.toString( ) : 쉼표로 구분된 배열의 값을 문자열로 출력<br>
+        <script>
+          document.write(a.toString())
+        </script>
+      </li>
+      <li>a.join("-") : 배열의 값을 ( )안의 문자열로 결합한 값으로 출력<br>
+        <script>
+          document.write(a.join("-"))
+        </script>
+      </li>
+      <li>a.pop( ) : 배열의 마지막 값을 반환하고 제거<br>
+        <script>
+          document.write(`a.pop( ) : ${a.pop()} / a : ${a} `)
+        </script>
+      </li>
+      <li>a.push( ) : 배열의 마지막에 새로운 값을 추가<br>
+        <script>
+          a.push('x');
+          document.write(`a = ${a}`)
+        </script>
+      </li>
+      <li>a[a.length] = value : 배열의 마지막에 새로운 값을 추가<br>
+        <script>
+          a[a.length] = "q";
+          document.write(`a = ${a}`)
+        </script>
+      </li>
+      <li>array1.concat() : 배열의 끝에 새로운 값(배열)을 추가 및 반환 <br>
+        <script>
+          let b = [1, 2, 3]
+          document.write(`a = ${a} /  newArr = ${a.concat(b)} /  b = ${b}`)
+        </script>
+      </li>
+      <li>a.shift( ) : 배열의 첫번째 값을 반환하고 제거 (모든 index를 한 칸 당김)<br>
+        <script>
+          document.write(`a.shift() : ${a.shift()} / a = ${a}`)
+        </script>
+      </li>
+      <li>a.unshift( ) : 배열의 첫번째 값을 새 값을 추가 (모든 index를 한 칸 밀림)<br>
+        <script>
+          document.write(`a.unshift('z') : ${a.unshift('z')} / a = ${a}`)
+        </script>
+      </li>
+      <li>a.slice( ) : 지정한 시작점부터 끝점 까지의 값을 반환 (원래 배열 유지)<br>
+        <script>
+          document.write(`a.slice('z',4) : ${a.slice('z',4)} / a = ${a}`)
+        </script>
+      </li>
+      <li>a.splice( ) : 기존의 값을 삭제 또는 교체하거나 새 값을 추가 (원래 배열 손상)<br>
+        <script>
+          document.write(`a.splice('z',0,'g','v') : ${a.splice('z',0,'g','v')} / a = ${a}`)
+        </script><br>
+        <script>
+          document.write(`a.splice('z',4) : ${a.splice('z',4)} / a = ${a}`)
+        </script><br>
+      </li>
+      <li>a.sort( ) : (정렬기준 = 유니코드) 배열의 값을 적절한 위치에 정렬한 후 반환 (원래 배열 손상)<br>
+        <script>
+          document.write(`a.sort() : ${a.sort()} / a = ${a}`)
+        </script>
+      </li>
+      <li>a.reverse( ) : (정렬기준 = 유니코드) 배열의 순서를 반전 (원래 배열 손상)<br>
+        <script>
+          document.write(`a.reverse() : ${a.reverse()} / a = ${a}`)
+        </script>
+      </li>
+    </ul>
+    <hr>
+    <article>
+      <h2>배열 문제</h2>
+      <form >
+        <p>
+          <label>
+            검정: <input type="checkbox" value="black" name="검정">
+          </label>
+          <label >
+            빨강: <input type="checkbox" value="red" name="빨강">
+          </label>
+          <label >
+            초록: <input type="checkbox" value="green" name="초록">
+          </label>
+          <label >
+            파랑: <input type="checkbox" value="blue" name="파랑">
+          </label>
+          <label >
+            하양: <input type="checkbox" value="white" name="하양">
+          </label>
+          <label >
+            레몬: <input type="checkbox" value="lemon" name="레몬">
+          </label>
+          <label >
+            오렌지: <input type="checkbox" value="orange" name="오렌지">
+          </label>
+        </p>
+        <p>
+          <input type="text" placeholder="레몬, 화이트" onchange="inputVal()">
+        </p>
+
+<script>
+  // const list = [];
+  // function inputVal() {
+  //   const input = document.querySelector('[type="text"]').value;
+  //   list.push(input)
+  //   console.log(list)
+  // }
+
+  // const black = document.querySelector('[value="black"]');
+  //   const red = document.querySelector('[value="red"]');
+  //   const green = document.querySelector('[value="green"]');
+  //   const blue = document.querySelector('[value="blue"]');
+  //   const white = document.querySelector('[value="white"]');
+  //   const lemon = document.querySelector('[value="lemon"]');
+  //   const orange = document.querySelector('[value="orange"]');
+// const listColor = [black, red, green, blue, white, lemon, orange]
+
+// const list = [];
+// list.push()
+// console.log(list)
+
+
+
+// console.log(input)
+</script>
+      </form>
+    </article>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Array</title>
+  <style>
+    body {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Javascript Array</h1>
+  <p>여러 변수를 index로 참조해 저장하는 데이터 타입 (Iterator 상속)</p>
+  <p>작성법 : const(let) array = [item1, item2, item3, ...]</p>
+  <p>호출법 : array[index]</p>
+  <p>["A", "B", "C", "D"].toString() : <script>
+      let a = ["A", "B", "C", "D"];
+      document.write(a)
+    </script> (객체를 바로 호출하면 toString()이 생략됨)
+  </p>
+  <p>대입법 : array[index] = value ex) a[1] = "b" : <script>
+      a[1] = "b";
+      document.write(a)
+    </script>
+  </p>
+  <p>typeof [] : <script>
+      document.write(typeof a)
+    </script> (배열의 타입은 typeof 사용 불가)</p>
+  <p>Array.isArray([]) : <script>
+      document.write(Array.isArray(a))
+    </script></p>
+  <p>Array[max index + 1]= value : <script>
+      a[4] = "E"
+      document.write(a)
+    </script> (Javascript는 동적으로 배열의 길이를 조절)</p>
+  <script>
+    const arrayX = [1, 2, 3, 4, "오", 6.0, 7.5];
+    const arrayY = new Array(1, 2, 3, 4, "오", 6.0, 7.5);
+    const arrayZ = [2, 3, 4, "오", 6.0, 1, 7.5];
+
+    const arrayCompare = (arr1, arr2) => {
+      // console.log(arrayX)
+      // console.log(arrayY)
+      if (arr1.length !== arr2.length) return false;
+      // console.log(arr1.length)
+      // console.log(arr2.length)
+      for (let a in arr1) {
+        console.log(`${a}번째 index ${arr1[a]} | ${arr2[a]}`)
+        if (arr1[a] !== arr2[a]) return false
+      }
+      return true
+    }
+
+    console.log(arrayCompare(arrayX, arrayY));
+    console.log(arrayCompare(arrayX, arrayZ));
+    console.log("")
+    console.log(arrayX); // [1, 2, 3, 4, "오", 6, 7.5]
+    console.log(arrayY); // [1, 2, 3, 4, "오", 6, 7.5]
+    console.log(arrayX === arrayY); // false
+    console.log(arrayX[0] === arrayY[0]); // true
+  </script>
+
+</body>
+
+</html>
