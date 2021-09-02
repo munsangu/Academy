@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Function</title>
+</head>
+
+<body style="text-align: center;">
+  <h1>Javascript' s function</h1>
+  <p>
+    함수는 프로그래밍 언어에서 가장 중요한 실행을 담당<br>
+    함수는 실행의 그룹화된 가장 작은 단위로 보통은 사용되나 함수 지향 언어인 Javascript에서는
+    Class처럼 사용되기도 함
+  </p>
+  <p>Javascript의 실행은 일반적으로는 순서를 따르지만 함수는 어디에 선언을 해도 참조 가능</p>
+  <p>
+    Javascript는 같은 이름의 함수를 (parameter의 종류 or 갯수가 다른 )여러 개 가질 수 없음
+    그래서, 함수를 선언할 때 상수에 익명함수를 참조하는 방식이 좋음
+    ex) const a = ( ) => console.log("HELLO");
+  </p>
+  <p>
+    기본 선언 방식 : function name(parameter) { return a; }
+    <br> 선언 시 어디서든 참조 가능한 함수가 됨
+    <br> 오버로딩 되지 않음 -> 같은 이름의 함수를 정의하면 마지막으로 정의한 함수만 호출됨
+  </p>
+  <p>
+    변수에 익명 함수 선언 방식(함수 표현식) : const(let) name = function(parameter) { return a; }<br>
+    변수가 함수를 참조한 이후 사용 가능<br>
+    변수가 엔진에서 관리되는 것처럼 사용하지 않으면 삭제됨<br>
+    계속 사용될 함수가 아니면 표현식을 사용하는 것이 유리(메모리 관리)<br>
+    오버로딩 되지않는 Javascript 특성상 함수의 이름이 명확해져서 오류를 줄임<br>
+  </p>
+  <p>
+    익명 함수 : 인스턴스 함수, 쓰고 사라질 함수, 보통은 parameter로 쓰일때 가볍게 선언하려고 만듦<br>
+    ex)
+    const a = function() { }; : 익명 함수이긴 하나 변수가 함수의 이름을 대신함<br>
+    document.onclick = function () { }; : onclick을 재정의한 익명 함수는 이벤트시 발생하고 사라짐<br>
+    document.onclick = a;
+  </p>
+  <p>
+    ES6에서 추가된 화살표 함수(익명함수로 사용하기를 권장) <br>
+    const a = (parameter) => {return}<br>
+    ex) 「document.onclick = ( ) => { };」 === 「document.addEventListener('click', () => {});」,<br>
+    window.setInterval(() => {}, 1000)
+    <b id="increaseNum"></b>
+    <script>
+      let n = 0;
+      setInterval(() => {
+        document.getElementById("increaseNum").innerText = ++n
+      }, 1000)
+    </script>
+  </p>
+  <p>
+    const a = function(a, b="default") {} : 함수의 parameter는 기본값(default)을 가질 수 있음<br>
+    이때 a는 function(a) {}, function(a, b) {} 에서 오버로딩과 같음
+  </p>
+  <p>
+    const a = function(...args) { }; a(1,2,3,4,5,6,...); ...args는 함수의 parameter 갯수를 제한하지 않음<br>
+    이때 args는 배열 타입
+  </p>
+  <p> Javascript는 함수를 객체로 인식(인스턴스 객체로 생성하는 함수는 권장하지 않음)<br>
+    <script>
+      document.write(` typeof (() => {}) :  ${typeof  (() => {})}`);
+      document.write(`<br> typeof (function() {}) :  ${typeof (function() {})}`);
+      document.write(`<br> typeof (new Function() {}) :  ${typeof new Function("a","b","return a+b")}`);
+    </script>
+  </p>
+
+  <script>
+    let a = "실행1";
+    let b = "실행2";
+    let c = "실행3";
+    // 이때 세미콜론이 실행의 가장 작은 단위
+    function d() {
+      let a = "실행1";
+      let b = "실행2";
+      let c = a + b + " 실행3";
+      console.log(c);
+    } // 실행의 묶음
+    d();
+    /*함수는 여러 실행을 한 번에 묶어서 함
+    똑같은  이름의 함수가 다른 매개변수를 가지면(overloading)  다른 함수로 인지하지 못함
+    변수가 익명함수를 참조하는 이유 중 하나가 이 같은 문제를  야기시키지 않으려는 방법
+    매개변수(parameter): 함수의 실행을 동적으로 하기 위한 존재
+    */
+    function d(p1, p2 = " MARVEL") {
+      let a = p1;
+      let b = p2;
+      let c = a + b + " 실행3";
+      console.log(c);
+    }
+    d("I'm", " IRONMAN");
+    d("I'm");
+
+    function r(a, b, c) {
+      let sum = a + b + c;
+      return sum; // 함수 종료  선언 밑의 실행문은 무의미
+      sum += 10; // 불필요
+    }
+
+    let sum = r(100, 200, 300);
+    console.log(sum);
+    console.log(r(400, 500, 600));
+
+
+    function sumTest(a, b, c, d) {
+      // undefined + 숫자 = NaN
+      let sum = 0;
+
+      // if(!b) {
+      //   sum = a+=a;
+      // } else if(!c) {
+      //   sum = a + b;
+      // } else if(!d) {
+      //   sum = a + b + c;
+      // } else {
+      //   sum = a + b + c + d
+      // }
+      // return sum;
+
+      if (b === undefined) {
+        sum = a += a;
+      } else if (c === undefined) {
+        sum = a + b;
+      } else if (d === undefined) {
+        sum = a + b + c;
+      } else {
+        sum = a + b + c + d;
+      }
+      return sum;
+    }
+    console.log(`sumTest(10, 20, 30, 40) : ${sumTest(10, 20, 30, 40)}`);
+    console.log(`sumTest(10, 20, 30) : ${sumTest(10, 20, 30)}`);
+    console.log(`sumTest(10, 20) : ${sumTest(10, 20)}`);
+    console.log(`sumTest(10) : ${sumTest(10)}`);
+
+    function sumTest2(...params) { // ...name : 배열로 parameter를 받음
+      // console.log(params)
+      let sum = 0;
+      if (params.length > 1) {
+        // console.log(params)
+        for (let param in params) {
+          sum += params[param];
+        }
+        return sum
+      }
+    }
+    console.log(`sumTest2(1,2,3,4,5,6) : ${sumTest2(1,2,3, 4,5,6)}`);
+    console.log(`sumTest2(1,2,3,4) : ${sumTest2(1,2,3,4)}`);
+    // console.log(`sumTest2([1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6]) : ${sumTest2([1,2,3,4,5,6], [1,2,3,4,5,6], [1,2,3,4,5,6])}`)
+  </script>
+</body>
+
+</html>

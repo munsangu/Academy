@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Condition</title>
+</head>
+
+<body style="text-align: center;">
+  <main>
+    <h1>Javascript 조건문</h1>
+    <p>블럭 안의 실행을 조건에 따라 동적으로 선택되게 하는 조건문 if, switch, 삼항 연산자</p>
+    <article>
+      <h2>if 조건문</h2>
+      <p>if(조건문) {실행문} : 조건이 true이면, 블럭({ })을 실행</p>
+      <p>if(조건문) {실행문1} else {실행문2} : 조건문이 true이면 실행문1 을 출력, 조건이 false이면 실행문2 를 출력</p>
+      <p>if(조건문1){실행문1}else if(조건문2){실행문2}else{실행문3}: 조건문1 이 true이면 실행문2를, 조건문1이 false이고 조건문2가 true이면 실행문2, 조건문1과 조건문2 둘 다 false이면 실행문3 </p>
+      <p><b id="ifTestMsg"></b></p>
+      <ul style="list-style: none;">
+        <li> if(value < 50) { } : <input type="text" placeholder="50보다 작은 수!" style="text-align: center;"
+            onchange="ifTest(this.value)">
+            <script>
+              const input = document.querySelector("[type='text']")
+              const b = document.getElementById("ifTestMsg")
+
+              function ifTest(num) {
+                if (num < 50) {
+                  b.innerText = `${num} 입력!`
+                } else {
+                  b.innerText = "조건에 맞는 수가 아니다!" 
+              }
+            }
+            </script>
+        </li>
+        <p><b id="ifTestMsg2"></b></p>
+        <ul style="list-style: none;">
+          <li> if(value > 20 && value < 50) { } : <input type="text" class="test2" placeholder="20 ~ 50 사이의 수!"
+              style="text-align: center;" onchange="ifTest2(this.value)">
+              <script>
+                const input2 = document.querySelector(".test2")
+                const b2 = document.getElementById("ifTestMsg2")
+
+                function ifTest2(num) {
+                  if (num > 20 && num < 50) {
+                    b2.innerText = `${num} 입력!`
+                  } else if(num > 50){
+                    b2.innerText = `${num}! 50보다 크다!`
+                  } else if(num == 50) {
+                    b2.innerText = `${num} 이다!`
+                  }
+                  else if(num == 20) {
+                    b2.innerText = `${num} 이다!`
+                  }else if(num < 20) {
+                    b2.innerText = `${num}! 20보다 작다!`
+                  } else {
+                    b2.innerText = `'${num}'! 숫자가 아니다!`
+                  }
+                }
+              </script>
+              <p><b id="ifTestMsg3"></b></p>
+              <ul style="list-style: none;">
+                <li> if(value < 20 || value > 50) { } :
+                    <input type="text" class="test3" placeholder="20보다 작거나 50보다 큰 수!" style="text-align: center;"
+                      onchange="ifTest3(this.value)">
+                    <script>
+                      const input3 = document.querySelector(".test3")
+                      const b3 = document.getElementById("ifTestMsg3")
+
+                      function ifTest3(num) {
+                        if (num < 20 || num > 50) {
+                          b3.innerText = `${num}  입력!`
+                        } else if(num > 20 || num < 50) {
+                          b3.innerText = `${num}! 조건에 맞는 수가 아니다!`
+                        }else {
+                          b3.innerText = `'${num}'! 숫자가 아니다!`
+                        }
+                      }
+                    </script>
+              <p><b id="ifTestMsg4"></b></p>
+              <ul style="list-style: none;">
+                <li> if ((value >= 10 && value <= 20) || (value >= 30 && value <= 40)) { } :
+                    <input type="text" class="test4" placeholder="10 ~ 20, 30 ~ 40" style="text-align: center;"
+                      onchange="ifTest4(this.value)">
+                    <script>
+                      const input4 = document.querySelector(".test4")
+                      const b4 = document.getElementById("ifTestMsg4")
+
+                      function ifTest4(num) {
+                        if ((num >= 10 && num <= 20) || (num >= 30 && num <= 40)) {
+                          b4.innerText = `${num}  입력!`
+                        } else if(num > 20 && num < 30) {
+                          b4.innerText = `${num}! 20보다 크거나 30보다 작은 수!`
+                        } else if(num > 40) {
+                          b4.innerText = `${num}! 40보다 큰 수!`
+                        } else if(num < 10) {
+                          b4.innerText = `${num}! 10보다 작은 수!`
+                        } else {
+                          b4.innerText = `'${num}!' 숫자가 아니다!`
+                        }
+                      }
+                    </script>
+                </li>
+              </ul>
+    </article>
+    <article>
+      <h2>Switch 조건문</h2>
+      <p>작성법: switch (표현식 or 변수) {case1: 실행문1 break; case2: 실행문2 break; ... default: 실행문3 } </p>
+      <p>
+        switch ~ case 는 엄격한 비교(===)를 사용하고 위에서부터 일치하는 항목을 찾으면 해당 실행을 하고 종료됨(엄격한 동등 비교 외 조건 사용 불가)
+      </p>
+      <p>
+        ① if에서 else if문과 동일하게 작동하지만 조건문의 수행 속도가 빠름<br>
+        ② 조건을 파악하기 좋음
+      </p>
+      <p>
+        <label >
+          <select onchange="switchTest(this.value)">
+            <option value="0">입력값 : 0</option>
+            <option value="1">입력값 : 1</option>
+            <option value="2">입력값 : 2</option>
+            <option value="3">입력값 : 3</option>
+          </select>
+        </label>
+      </p>
+    </article>
+    <script>
+      function switchTest(x) {
+        switch (Number(x)) {
+          case 0: 
+            console.log(`입력한 값은 0!`)
+            break;
+          case 1: 
+            console.log(`입력한 값은 1!`)
+            break;
+          case 2: 
+            console.log(`입력한 값은 2!`)
+            break;
+          case 3: 
+            console.log(`입력한 값은 2!`)
+            break;
+        }
+      }
+      switchTest(0)
+    </script>
+  </main>
+</body>
+
+</html>

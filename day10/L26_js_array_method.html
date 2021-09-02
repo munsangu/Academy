@@ -96,60 +96,61 @@
     <hr>
     <article>
       <h2>배열 문제</h2>
-      <form >
+      <form name="colorCheckForm">
         <p>
           <label>
-            검정: <input type="checkbox" value="black" name="검정">
+            검정: <input type="checkbox" value="검정" name="colorCheck">
           </label>
-          <label >
-            빨강: <input type="checkbox" value="red" name="빨강">
+          <label>
+            빨강: <input type="checkbox" value="빨강" name="colorCheck">
           </label>
-          <label >
-            초록: <input type="checkbox" value="green" name="초록">
+          <label>
+            초록: <input type="checkbox" value="초록" name="colorCheck">
           </label>
-          <label >
-            파랑: <input type="checkbox" value="blue" name="파랑">
+          <label>
+            파랑: <input type="checkbox" value="파랑" name="colorCheck">
           </label>
-          <label >
-            하양: <input type="checkbox" value="white" name="하양">
+          <label>
+            하양: <input type="checkbox" value="하양" name="colorCheck">
           </label>
-          <label >
-            레몬: <input type="checkbox" value="lemon" name="레몬">
+          <label>
+            레몬: <input type="checkbox" value="레몬" name="colorCheck">
           </label>
-          <label >
-            오렌지: <input type="checkbox" value="orange" name="오렌지">
+          <label>
+            오렌지: <input type="checkbox" value="오렌지" name="colorCheck">
           </label>
         </p>
         <p>
-          <input type="text" placeholder="레몬, 화이트" onchange="inputVal()">
+          <input type="text" name="textColors" placeholder="레몬,하양" value="레몬,하양">
+          <input type="button" name="" value="입력" onclick="test(this)">
+          <input type="reset">
         </p>
-
-<script>
-  // const list = [];
-  // function inputVal() {
-  //   const input = document.querySelector('[type="text"]').value;
-  //   list.push(input)
-  //   console.log(list)
-  // }
-
-  // const black = document.querySelector('[value="black"]');
-  //   const red = document.querySelector('[value="red"]');
-  //   const green = document.querySelector('[value="green"]');
-  //   const blue = document.querySelector('[value="blue"]');
-  //   const white = document.querySelector('[value="white"]');
-  //   const lemon = document.querySelector('[value="lemon"]');
-  //   const orange = document.querySelector('[value="orange"]');
-// const listColor = [black, red, green, blue, white, lemon, orange]
-
-// const list = [];
-// list.push()
-// console.log(list)
-
-
-
-// console.log(input)
-</script>
       </form>
+
+      <script>
+        const colorChecks = document.forms.colorCheckForm.colorCheck;
+        // const colorChecks2 = document.querySelectorAll('[name="colorCheck"]');
+        const input = document.querySelector('[type="text"]').value;
+        // console.log(input)
+        // console.log(colorChecks)
+        // console.log(colorChecks2)
+        // for(let colorCheck of colorChecks) {
+        //   console.log(colorCheck.value)
+        // }
+        const test = function (checkButton) {
+          let textColors = checkButton.form.textColors.value
+          let colorList = textColors.split(",")
+          // console.log(colorList)
+          for (let i in colorList) {
+            // console.log(`${i} : ${colorList[i]}`)
+            for (let colorCheck of colorChecks) {
+              // console.log(`colorCheck.value : ${colorCheck.value} / colorList[${i}] : ${colorList[i]}`)
+              if (colorCheck.value === colorList[i]) colorCheck.checked = true;
+            }
+          }
+        }
+      </script>
+
     </article>
   </main>
 </body>
