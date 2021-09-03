@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Loop</title>
+</head>
+
+<body>
+  <main>
+    <h1>Javascript Loop & Iteration</h1>
+    <p>for, for ~ in, for ~ of, while, do ~ while 반복문이 있음</p>
+    <p>똑같은 명령을 일정 횟수만큼 반복하기 위해 작성하는 문법으로 검사식에 많이 사용됨</p>
+    <article>
+      <h2>for 반복문</h2>
+      <p>for([ 초기문 ]; [ 조건문 ]; [ 증감문 ]) { 실행문 } => 조건문이 false가 될 때까지 실행문을 반복 </p>
+      <!-- <script>
+        // for(let a = 0 ; a < 10 ; a ++) {console.log(a)}
+      </script> -->
+      <ul style="list-style: none;">
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1] 에서 최대값 찾기 : <script>
+            let max = -Infinity;
+            let array = [11, 2, 20, 3, 13, 0, -20, 100, 1];
+            for (let i = 0; i < array.length; i++) {
+              if (max < array[i]) {
+                max = array[i];
+              }
+            };
+            document.write(max);
+          </script>
+        </li>
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1] 에서 최소값 찾기 : <script>
+            let min = Infinity;
+            for (let i = 0; i < array.length; i++) {
+              if (min > array[i]) {
+                min = array[i];
+              }
+            };
+            document.write(min);
+          </script>
+        </li>
+        <li>
+          버블 정렬 : 두 인접한 원소를 검사하여 정렬하는 방법<br>
+          ex [7<sup>1</sup>,4<sup>2</sup>,5<sup>3</sup>,1<sup>4</sup>,3<sup>5</sup>] (1회전: (1,2), (2,3), (3,4), (4,5)) /
+          (2회전: (1,2), (2,3), (3,4)) / (3회전: (1,2), (2,3)) / (4회전: (1,2))
+        </li>
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1]를 버블정렬(내림차순) : <script>
+            // console.log(array)
+            // console.log("======================")
+            for (let i = 0; i < array.length - 1; i++) {
+              let temp;
+              for (let j = 0; j < array.length - 1 - i; j++){
+                if (array[j] < array[j + 1]) {
+                  temp = array[j];
+                  array[j] = array[j + 1];
+                  array[j + 1] = temp;
+                }
+                // console.log(` ${i + 1}회전 ${array}`)
+              }
+                //  console.log("======================")
+            }
+            document.write(array)
+          </script>
+        </li>
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1]를 버블정렬(오름차순) : <script>
+            // console.log(array)
+            // console.log("======================")
+            for (let i = 0; i < array.length - 1; i++) {
+              let temp;
+              for (let j = 0; j < array.length - 1 - i; j++) {
+                if (array[j] > array[j + 1]) {
+                  temp = array[j];
+                  array[j] = array[j + 1];
+                  array[j + 1] = temp;
+                }
+                // console.log(` ${i + 1}회전 ${array}`)
+              }
+              // console.log("======================")
+            }
+            document.write(array)
+          </script>
+        </li>
+        <li>선택 정렬 : 배열의 최소값(최대값)을 검색하여 배열의 왼쪽부터 순차적으로 정렬을 반복<br>
+          ex [7, 4, 5, 1, 3] (1회전: [7, 4, 5, 1, 3] )) /(2회전: [7, 5, 4, 1, 3]) / (3회전: [7, 5, 4, 1, 3]) / (4회전: [7, 5, 4, 3, 1])
+        </li>
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1]를 선택정렬(내림차순) : <script>
+          // console.log(array)
+          // console.log("======================")
+          let temVal;
+          for(let i = 0 ; i< array.length ; i++) {
+            for(let j = i + 1 ; j < array.length  ; j++){
+              if(array[j] >array[i]) {
+                temVal = array[j];
+                array[j] = array[i];
+                array[i] = temVal;
+              }
+              // console.log(` ${i + 1}회전 ${array}`)
+            }
+            // console.log("======================")
+          }
+          document.write(array)
+        </script></li>
+        <li>[11, 2, 20, 3, 13 ,0, -20, 100, 1]를 선택정렬(오름차순) : <script>
+          // console.log(array)
+          // console.log("======================")
+          let temVal2;
+          for(let i = 0 ; i< array.length ; i++) {
+            for(let j = i + 1 ; j < array.length  ; j++){
+              if(array[j] < array[i]) {
+                temVal2 = array[j];
+                array[j] = array[i];
+                array[i] = temVal2;
+              }
+            //   console.log(` ${i + 1}회전 ${array}`)
+            }
+            // console.log("======================")
+          }
+          document.write(array)
+        </script></li><br>
+        <li>별로 정사각형 만들기<br>
+          <script>
+            for(let i = 0 ; i < 5 ; i++){
+              for(let j = 0 ; j < 5 ; j++) {
+                document.write("*")
+              }
+              document.write("<br>")
+            }
+          </script>
+        </li><br>
+        <li>별로 트리 만들기 1<br>
+          <script>
+            for(let i = 0 ; i < 5 ; i++){
+              for(let j = 0 ; j <= i ; j++) {
+                document.write("*")
+              }
+              document.write("<br>")
+            }
+          </script>
+        </li><br>
+        <li>별로 역트리 만들기<br>
+          <script>
+            for(let i = 0 ; i < 5 ; i++) {
+              for(let j = 0 ; j < 5-i ; j++){
+                document.write("*")
+              }
+              document.write("<br>")
+            }
+          </script>
+        </li>
+        <li>별로 정삼각트리 만들기<br>
+          <script>
+                for(let i = 0; i < 5; i++)  {
+                  for(let j=4; j > i; j--)  {
+                    document.write('&nbsp');
+                  }
+                  for(let j=0; j <= i; j++)  {
+                    document.write('*');
+                  }
+                  for(let j=1; j <= i; j++)  {
+                    document.write('*');
+                  }
+                  document.write('<br>');
+              }
+          </script>
+        </li>
+        <li>별로 역정삼각트리 만들기<br>
+          <script>
+            for(let i = 0; i < 5; i++)  {
+              for(let j=0; j < i; j++)  {
+                document.write('&nbsp');
+              }
+              for(let j=5; j > i; j--)  {
+                document.write('*');
+              }
+              for(let j=4; j > i; j--)  {
+                document.write('*');
+              }
+              document.write('<br>');
+            }
+          </script>
+        </li>
+
+      </ul>
+    </article>
+    <article>
+      <h2>for ~ in 반복문</h2>
+      <p>for(variable in object) {실행문} : variable을 가진 array, object ...가 variable을 반환할 수 없을 때 까지 실행문을 반복</p>
+      <ul>
+        <li>["a", "b", "c "]  -> <script>let ar = ["a", "b", "c "];  for(let i in ar) {document.write(` ${i} : ${ar[i]} /`)}</script></li>
+        <li>{name: "Tony Stark", age: 100, hero: "IRONMAN"} -> <script>let obj = {name: "Tony Stark", age: 100, hero: "IRONMAN"};  for(let i in obj) {document.write(` ${i} : ${obj[i]} /`)}</script></li>
+      </ul>
+    </article>
+    <article>
+      <h2>for ~ of 반복문</h2>
+      <p>for(variable of iterable) {실행문}: 반복 가능한 데이터 타입의 객체를 반복하고 각 개별 속성값에 대해 실행되는 문이 있는 사용자 정의 반복 후크를 호출하는 루프를 생성</p>
+      <p>(iterable).next( ) : next( )는 포인트가 객체 밖에 있다가 내용물이 있으면 true를 반환하고 내용물로 포인트를 옮김. 그리고 내용물도 반환, 만약 값이 더 이상 나오지 않으면 false를 반환</p>
+     <p>array, map, set, string에 사용 가능</p>
+      <p>key 값을 알아내기 힘듦</p>
+    <script>for(let i of ar) {document.write(` ${i} /`) }</script>
+    </article>
+    <article>
+      <h2>while 반복문</h2>
+      <p>while(조건문){실행문} =>조건문이 false가 될 때까지 실행문을 반복 </p>
+      <!-- <script>
+        let b = 0;
+        while(b<10) {console.log(`b : ${b}`); b++;}
+      </script> -->
+    </article>
+    <article>
+      <ul>
+        <li>
+          Obj = {black: ["black","white"], default: ["white", "black"], darkgray: ["darkgray", "bisque"], pink: ["lavender", "indigo"]}
+          <select name="themeSelect" onchange="changeTheme(event.target)">
+            <option value="basic">기본</option>
+            <option value="black">검정</option>
+            <option value="darkgray">메탈</option>
+            <option value="pink">핑크</option>
+          </select>
+          <script>
+            let objTheme =  {basic: ["white", "black"], black: ["black","white"],  darkgray: ["darkgray", "bisque"], pink: ["lavender", "indigo"]}
+            //console.log(objTheme["basic"][0]) // black
+            let optVal = document.querySelector("[name ='themeSelect' ]")
+            //console.log(optVal[0].value)  // basic
+
+            function changeTheme(e) {
+            if(e.value == optVal[0].value){
+                document.body.style.backgroundColor = objTheme[optVal[0].value][0];
+                document.body.style.color = objTheme[optVal[0].value][1];
+              }else if(e.value == optVal[1].value) {
+                document.body.style.backgroundColor = objTheme[optVal[1].value][0];
+                document.body.style.color = objTheme[optVal[1].value][1];
+              }else if(e.value == optVal[2].value) {
+                document.body.style.backgroundColor = objTheme[optVal[2].value][0];
+                document.body.style.color = objTheme[optVal[2].value][1];
+              } else if(e.value == optVal[3].value) {
+                document.body.style.backgroundColor = objTheme[optVal[3].value][0];
+                document.body.style.color = objTheme[optVal[3].value][1];
+              }
+          }
+          </script>
+        </li>
+      </ul>
+    </article>
+  </main>
+</body>
+
+</html>
