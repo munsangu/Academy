@@ -223,7 +223,6 @@
             //console.log(objTheme["basic"][0]) // black
             let optVal = document.querySelector("[name ='themeSelect' ]")
             //console.log(optVal[0].value)  // basic
-
             function changeTheme(e) {
             if(e.value == optVal[0].value){
                 document.body.style.backgroundColor = objTheme[optVal[0].value][0];
@@ -241,6 +240,30 @@
           }
           </script>
         </li>
+        <ul id="popNav">
+          <li onmouseover="changeDis(event.target)">html Study</li>
+            <ul class="pop_nav" style="display: none;">
+              <li><a href="#">Intro</a></li>
+              <li><a href="#">Basic</a></li>
+              <li><a href="#">Attributes</a></li>
+              <li><a href="#">Style</a></li>
+            </ul>
+          <li>Javascript Study</li>
+            <ul class="pop_nav" style="display: none;">
+              <li><a href="#">intro</a></li>
+              <li><a href="#">Variable</a></li>
+              <li><a href="#">Data Type</a></li>
+              <li><a href="#">Number</a></li>
+            </ul>
+        </ul>
+        <script>
+          let pop = document.querySelectorAll('.pop_nav');
+          // console.log(pop[0].style.display)
+          function changeDis(e) {
+           pop[0].style.display = "block"
+           pop[1].style.display = "block"
+          }
+        </script>
       </ul>
     </article>
   </main>

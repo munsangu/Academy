@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript array method 2</title>
+  <style>
+    li {
+      list-style: none;
+    }
+
+    form {
+      width: 30%;
+      margin: 0 auto;
+      background-color: thistle;
+      border: 2px solid thistle;
+      border-radius: 30px;
+      color: whitesmoke;
+      font-weight: bold;
+    }
+    
+    .menu_btn {
+      display: flex;
+      flex-wrap:  wrap;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+   [type="button"], [type = "reset"] {
+     width: 100px;
+     height: 100px;
+     border:  1px solid skyblue;
+     border-radius: 20px;
+     background-color:  skyblue;
+     color: whitesmoke;
+     margin: 5px;
+     text-align: center;
+     font-size: 30px;
+   }
+
+   [type="button"]:hover, [type = "reset"]:hover {
+     border: 2px solid yellow;
+     color: yellow;
+   }
+
+   [type = "number"] {
+     text-align: center;
+     width: 20%;
+    border:  1px solid cornflowerblue;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: whitesmoke;
+   }
+
+   sub {
+    color: red;   
+  }
+   
+   
+  </style>
+</head>
+
+<body style="text-align: center;">
+  <main>
+    <h1>Javascript Array Method (Loop Iteration 속성이 있는 method)</h1>
+    <p>배열의 메소드 중에 가장 유용한 3가지는 모두 반복문의 속성을 가짐</p>
+    <p>반복문 속성이 있는 배열의 메소드는 배열의 길이만큼 실행되고, 이 때 익명함수를 재정의 할 수 있는데 이를 콜백 함수라고 함</p>
+    <article>
+      <h2>Array.forEach(function ( value, index, self ) { }) : forEach는 주어진 함수를 배열 요소 각각에 대해 실행(self: 배열 전체 출력)</h2>
+      <ul>
+        <li>
+          ["바나나킥", "썬칩", "빼빼로", "오감자"].forEach(function(v, i) { } ) : <br>
+          <script>
+            const snack = ["바나나킥", "썬칩", "빼빼로", "오감자"];
+            snack.forEach(function (value, index) {
+              document.write(`index : ${index} - value : ${value} / `)
+            })
+            for (let i = 0; i < snack.length; i++) {
+              // console.log(`i - ${i} , v - ${snack[i]}`)
+            }
+          </script>
+        </li>
+        <li>Array.forEach(function(value, index, self) { } )</li>
+        <li>Array.forEach(function(value, index) { } )</li>
+        <li>Array.forEach(function(value) { } ) === for(value of Array)</li>
+        <li>Array.forEach((value) => {실행문} )</li>
+        <li>
+          최소값, 최대값 찾기 nums = [21, 110, -100, 30, 0, 13] :
+          <script>
+            const nums = [21, 110, -100, 30, 0, 13];
+            // 최소값 찾기
+            let min2 = Infinity;
+            let max2 = -Infinity;
+            nums.forEach(function (value) {
+              if (min2 > value) {
+                min2 = value;
+              }
+              if (max2 < value) {
+                max2 = value;
+              }
+            })
+            document.write(`min = ${min2} / max = ${max2}`);
+          </script>
+        </li>
+        <li>
+          nums2 = [21, "십", 110, -100, 30, 0 , "10", 13] 에서 숫자들의 합 :
+          <script>
+            const nums2 = [21, "십", 110, -100, 30, 0, "10", 13];
+            let sum = 0;
+            nums2.forEach(function (value) {
+              if (typeof value !== 'string') {
+                sum += value;
+              }
+            })
+            document.write(sum)
+          </script>
+        </li>
+        <li>
+          nums2 = [21, "십", 110, -100, 30, 0 , "10", 13] 에서 문자 지우기 :
+          <script>
+            nums2.forEach(function (value, index) {
+              if (typeof value === 'string') {
+                nums2.splice(index, 1)
+              }
+            })
+            document.write(`[${nums2}]`)
+          </script>
+        </li>
+        <li>
+          nums= [21, 110, -100, 30, 0, 13] 에서 절대값 & 거듭 제곱의 새로운 배열 만들기 :
+          <script>
+            const powNums = [];
+            nums.forEach(function (value) {
+              powNums.push(Math.pow(Math.abs(value), 2))
+            })
+            document.write(`[${powNums}]`)
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Array.map(function(value, index, self) {return change value} ) : 배열의 값을 수정후 새로운 배열로 반환</h2>
+      <ul>
+        <li> nums2.map ( ) = <br>
+          <script>
+            nums2.map((value, index, self) => {
+              document.write(` {value : ${value}  / index : ${index} / self : ${self} }<br>`)
+            })
+          </script>
+        </li>
+        <pre style="border: 1px solid;">
+const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+// expected output: Array [2, 8, 18, 32]
+          </pre>
+        <li> nums2.map (2배) =
+          <script>
+            const nums2_2 = nums2.map(value => value * 2);
+            document.write(`[${nums2_2}]`)
+          </script>
+        </li>
+        <li>
+          [-1, -3, -10].map(value => (Math.pow(value, 2))) :
+          <script>
+            const pow = [-1, -3, -10].map(value => (Math.pow(value, 2)));
+            document.write(`[${pow}]`)
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Array.filter(funtion(value, index, self ) {return boolean } ): 주어진 함수의 테스트를 통과하는 모든 요소를 모아 새로운 배열로 반환</h2>
+      <li>
+        ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'].filter(word => word.length > 6) :
+        <script>
+          const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+          const result = words.filter(word => word.length > 6);
+          document.write(result);
+        </script>
+      </li>
+      <li>
+        [-200, "백", 100, 40, "-40", -50, -10, "십", 1]에서 숫자만 추출한 배열:
+        <script>
+          const onlyNum = [-200, "백", 100, 40, "-40", -50, -10, "십", 1].filter((value) => {
+            return typeof value === 'number'
+          });
+          document.write(`[${onlyNum}]`);
+        </script>
+      </li>
+      <li>
+        [{name: "k", age: 10}, {name: "a", age: 20}, {name: "b", age: 30}, {name: "c", age: 40}] 에서 age 가 20이상인 값만 추출
+        <script>
+          const info = [{
+            name: "k",
+            age: 10
+          }, {
+            name: "a",
+            age: 20
+          }, {
+            name: "b",
+            age: 30
+          }, {
+            name: "c",
+            age: 40
+          }];
+          const info_20up = info.filter((value) => {
+            return value.age > 20
+          })
+          document.write(JSON.stringify(info_20up))
+        </script>
+      </li>
+    </article>
+    <article>
+      <h2>Array.every( ): 배열 안의 <b style="color: red;">모든 요소</b>가 주어진 판별 함수를 통과하는지 테스트(Boolean 값 반환)</h2>
+      <p>Array.every(function(value, index, self) {return boolean })</p>
+      <p>하나라도 false가 있는지 검사하는 것</p>
+      <p>Array[0] > 비교값 && Array[2] > 비교값 && ..... </p>
+      <ul>
+        <li>
+          onlyNum.every((value) => {value > 0}) : <script>
+            // let testResult = true
+            // onlyNum.forEach((value) => {
+            //   console.log(testResult)
+            //   if(value > 0) {
+            //     testResult = false;
+            //   } 
+            // })
+
+            document.write(onlyNum.every((value) => {
+              return value > 0
+            }));
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Array.some( ): 배열 안의 <b style="color: red;">어떤 요소라도</b> 주어진 판별 함수를 통과하는지 테스트(Boolean 값 반환)</h2>
+      <p>Array.some(function(value, index, self) {return boolean })</p>
+      <p>하나라도 true가 있는지 검사하는 것</p>
+      <p>Array[0] > 비교값 || Array[2] > 비교값 || ..... </p>
+      <ul>
+        <li>
+          onlyNum.some((value) => {value > 0}) : <script>
+            // let testResult = false;
+            // onlyNum.forEach((value) => {
+            //   if(value > 0) {
+            //     testResult = true;
+            //   } else {
+            //     testResult = false;
+            //   }
+            //   console.log(testResult)
+            // })
+
+            document.write(onlyNum.some((value) => {
+              return value > 0
+            }))
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>점 수 계 산 기</h2>
+      <ul>
+       <form class="menu_btn">
+          <li>  <input type="button" value="총점" onclick="totalRank()"></li>
+          <li> <input type="button" value="평균" onclick="avgRank()"></li>
+          <li> <input type="button" value="최소" onclick="minRank()"></li>
+          <li> <input type="button" value="최대" onclick="maxRank()"></li>
+          <li><input type="button" value="낙제" onclick="failRank()"></li>
+          <li><input type="button" value="만점" onclick="perfectRank()"></li>
+          <li><button type="button" name="button" onclick="convertRank()">변환</button></li>
+        </form>
+      </ul>
+
+      <form name="someTestForm" action="index.html" method="POST">
+        <p><label>수학 점수 : <input type="number"  class= "score" name="m" value="70"></label></p>
+        <p><label>영어 점수 : <input type="number"  class= "score" name="e" value="90"></label></p>
+        <p><label>화학 점수 : <input type="number"  class= "score" name="c" value="100"></label></p>
+        <p><label>국사 점수 : <input type="number"  class= "score"  name="h" value="30"></label></p>
+        <p><label>국어 점수 : <input type="number"  class= "score"  name="k" value="70"></label></p>
+        <p><label>총 점수 : <input type="number" name="total" value="0"></label></p>
+        <p><label>평균 점수 : <input type="number" name="avg" value="0"></label></p>
+        <p><label>최소 점수 : <input type="number" name="min" value="0"></label></p>
+        <p><label>최대 점수 : <input type="number" name="max" value="0"></label></p>
+        <p><label>낙제 유무 : <input type="number" name="is_f" value="0"></label><br><sub>(낙제 : 50점 미만 과목)</sub></p>
+        <p><label>만점 유무 : <input type="number" name="is_ten" value="0"></label></p>
+        <p><input type="reset"></p>
+      </form>
+      <script>
+        const form = document.forms["someTestForm"];
+        // console.log(form[0]) <input type="number" name="m" value="70">
+        // console.log(form[0].value)
+        const rank = document.querySelectorAll('[type="number"].score');
+        const rankList = Array.from(rank);
+        // console.log(rankList);
+        // domList를 새로운 배열로 바꾸는 방법
+        // Array.from()
+        const total = document.querySelector("[name='total']");
+        const avg = document.querySelector("[name='avg']");
+        const min = document.querySelector("[name='min']");
+        const max = document.querySelector("[name='max']");
+        const is_f = document.querySelector("[name='is_f']");
+        const is_ten = document.querySelector("[name='is_ten']");
+
+        // console.log(rank[0]); <input type="number" name="m" value="70">
+
+        function totalRank() {
+          let sum = 0;
+          rank.forEach((val) => {
+           sum += Number(val.value);
+          })
+          total.value = sum;
+        }
+
+        function avgRank() {
+          let sum = 0;
+          let avgScore  = 0;
+          rank.forEach((val) => {
+           sum += Number(val.value);
+          })
+          avgScore = sum / rank.length;
+          avg.value = avgScore;
+        }
+
+        function minRank() {
+          let tempMin = Infinity;
+          rank.forEach((val) => {
+            // console.log(Number(val.value))
+            if(tempMin > Number(val.value)) {
+              tempMin =  Number(val.value)
+            }
+           })
+           min.value = tempMin;
+          }
+
+        function maxRank() {
+          let tempMax = -Infinity;
+          rank.forEach((val) => {
+            // console.log(Number(val.value))
+            if(tempMax < Number(val.value)) {
+              tempMax =  Number(val.value)
+            }
+           })
+           max.value = tempMax;
+          }
+
+        function failRank() {
+          // 낙제 과목 개수 표시 코드
+          // let count = 0
+          // rank.forEach((val) => {
+          //   if(Number(val.value) < 50) {
+          //     count +=1;
+          //   }
+          // })
+          // is_f.value = count;
+
+          let failResult = true;
+          rankList.every((val) => {
+            if(Number(val.value) < 50) {
+              failResult = false;
+            }
+          })
+          is_f.value = Number(failResult);
+          }
+
+          function perfectRank() {
+          // 만점 과목 개수 표시 코드
+          // let count = 0
+          // rank.forEach((val) => {
+          //   if(Number(val.value) === 100) {
+          //     count +=1;
+          //   }
+          // })
+          // is_ten.value = count;
+
+          let perfectRank = false;
+           rankList.some((val) => {
+            if(Number(val.value) === 100) {
+              perfectRank = true;
+            }
+            is_ten.value = Number(perfectRank);
+          })
+          }
+
+          function convertRank() {
+          let convertScore = [];
+          rank.forEach((val, i) => {
+            convertScore[i] = (Number(val.value) * 0.045).toFixed(2)
+            // Number.toFixed(x) : 숫자를 고정 소수점 표기법으로 표기해서 반환
+          })
+
+          convertScore.forEach((val, i ) => {
+            form[i].value = convertScore[i] ;
+          })
+          }
+
+
+
+
+
+
+      
+      </script>
+    </article>
+  </main>
+</body>
+
+</html>
