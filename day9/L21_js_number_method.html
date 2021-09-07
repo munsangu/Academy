@@ -23,6 +23,7 @@
     th {
       border: 1px solid black;
     }
+
     table th {
       background-color: #2f2f2f;
       color: #fff;
@@ -210,6 +211,221 @@
             <script>
               document.write(Number.parseInt("3.14abcdefgfsdfseg"))
             </script>
+          </td>
+        </tr>
+        <tr>
+          <td>Number()</td>
+          <td>
+            문자열(숫자)를 숫자열로 변환하는데 사용<br>
+            ex) Number("3.14abcdefgfsdfseg") =
+            <script>
+              document.write(Number("3.14abcdefgfsdfseg"))
+            </script><br>
+            ex) Number(" 3.14abcdefgfsdfseg") =
+            <script>
+              document.write(Number("  3.14abcdefgfsdfseg"))
+            </script><br>
+            ex) Number("314e-2") =
+            <script>
+              document.write(Number("314e-2"))
+            </script><br>
+            ex) Number("sdfgdfgdsfgdfg") =
+            <script>
+              document.write(Number("sdfgdfgdsfgdfg"))
+            </script><br>
+            ex) Number("sdfgdfgdsfgdfg3.14") =
+            <script>
+              document.write(Number("sdfgdfgdsfgdfg3.14"))
+            </script><br>
+            ex) Number(" 3.14") =
+            <script>
+              document.write(Number("    3.14"))
+            </script><br>
+            ex) Number("3.14 ") =
+            <script>
+              document.write(Number("3.14      "))
+            </script><br>
+            ex) Number(" 3.14 ") =
+            <script>
+              document.write(Number("   3.14   "))
+            </script><br>
+            ex) Number("Infinity") =
+            <script>
+              document.write(Number("Infinity"))
+            </script><br>
+            ex) Number(true) =
+            <script>
+              document.write(Number(true))
+            </script><br>
+            ex) Number(false) =
+            <script>
+              document.write(Number(false))
+            </script><br>
+            ex) Number("true") =
+            <script>
+              document.write(Number("true"))
+            </script><br>
+            ex) Number("false") =
+            <script>
+              document.write(Number("false"))
+            </script><br>
+            ex) Number("1/100") =
+            <script>
+              document.write(Number("1/100"))
+            </script><br>
+            ex) Number(new Date()) =
+            <script>
+              document.write(Number(new Date())) // 1970-01-01부터 현재까지의 시간(단위: ms)
+            </script><br>
+            ex) Number(new Date("1970-01-01")) =
+            <script>
+              document.write(Number(new Date("1970-01-01")))
+            </script><br>
+            <input type="number" value="2110"><input type="button" value="+100"
+              onclick="alert(Number(document.querySelector(`[type = 'number']`).value)+100)">
+          </td>
+        </tr>
+        <tr>
+          <td>Number.toFixed()</td>
+          <td>
+            숫자를 고정 소수점 표기법으로 표기해 반환 (0 ~ 양수) / 문자열 타입으로 반환됨<br>
+            ex) Math.PI.toFixed(0) =
+            <script>
+              document.write(`${Math.PI.toFixed(0)} / type : ${typeof Math.PI.toFixed(0)}`)
+            </script><br>
+            ex) Math.PI.toFixed(1) =
+            <script>
+              document.write(`${Math.PI.toFixed(1)} / type : ${typeof Math.PI.toFixed(1)} `)
+            </script><br>
+            ex) Math.PI.toFixed(2) =
+            <script>
+              document.write(`${Math.PI.toFixed(2)} / type : ${typeof Math.PI.toFixed(2)}`)
+            </script><br>
+            ex) 5.3456789.toFixed(3) =
+            <script>
+              document.write(`${5.3456789.toFixed(3)}  / type : ${typeof 5.3456789.toFixed(3)} `)
+            </script><br>
+            ex) 5.3456789.toFixed(3) + 10 =
+            <script>
+              document.write(`${5.3456789.toFixed(3) + 10 }  / type : ${typeof 5.3456789.toFixed(3) } `)
+            </script><br>
+            ex) 5.3456789.toFixed(3) + 10 =
+            <script>
+              document.write(`${Number(5.3456789.toFixed(3)) + 10 }  / type : ${typeof Number(5.3456789.toFixed(3)) } `)
+            </script><br>
+          </td>
+        </tr>
+        <tr>
+          <td>toPrecision()</td>
+          <td>
+            Number 객체를 지정된 정밀도로 나타내는 문자열을 반환 <br>
+            (1이상의 값 입력 가능 / 해당 소수점 자릿 수에서 반올림) <br>
+            ex) Math.PI =
+            <script>
+              document.write(`${Math.PI}...`)
+            </script><br>
+            ex) Math.PI.toPrecision(0) =
+            <script>
+              document.write(`${Math.PI.toPrecision(0)} / type : ${typeof Math.PI.toPrecision(0)}`)
+            </script><br>
+            ex) Math.PI.toPrecision(1) =
+            <script>
+              document.write(`${Math.PI.toPrecision(1)} / type : ${typeof Math.PI.toPrecision(1)}`)
+            </script><br>
+            ex) Math.PI.toPrecision(2) =
+            <script>
+              document.write(`${Math.PI.toPrecision(2)} / type : ${typeof Math.PI.toPrecision(2)}`)
+            </script><br>
+            ex) Math.PI.toPrecision(3) =
+            <script>
+              document.write(`${Math.PI.toPrecision(3)} / type : ${typeof Math.PI.toPrecision(3)}`)
+            </script><br>
+            ex) Math.PI.toPrecision(4) =
+            <script>
+              document.write(`${Math.PI.toPrecision(4)} / type : ${typeof Math.PI.toPrecision(4)}`)
+            </script><br>
+            ex) Math.PI.toPrecision(5) =
+            <script>
+              document.write(`${Math.PI.toPrecision(5)} / type : ${typeof Math.PI.toPrecision(5)}`)
+            </script><br>
+          </td>
+        </tr>
+        <tr>
+          <td>toExponential()</td>
+          <td>
+            숫자를 지수 표기법(100 -> 1.0e+2)으로 표기해 반환/ 문자열 타입으로 반환됨<br>
+            ex) Math.PI.toExponential(0) =
+            <script>
+              document.write(`${Math.PI.toExponential(0)} / type : ${typeof Math.PI.toExponential(0)}`)
+            </script><br>
+            ex) Math.PI.toExponential(1) =
+            <script>
+              document.write(`${Math.PI.toExponential(1)} / type : ${typeof Math.PI.toExponential(1)} `)
+            </script><br>
+            ex) Math.PI.toExponential(2) =
+            <script>
+              document.write(`${Math.PI.toExponential(2)} / type : ${typeof Math.PI.toExponential(2)}`)
+            </script><br>
+            ex) 5.3456789.toExponential(3) =
+            <script>
+              document.write(`${5.3456789.toExponential(3)}  / type : ${typeof 5.3456789.toExponential(3)} `)
+            </script><br>
+            ex) 5.3456789.toExpnoential(3) + 10 =
+            <script>
+              document.write(`${5.3456789.toExponential(3) + 10 }  / type : ${typeof 5.3456789.toExponential(3) } `)
+            </script><br>
+            ex) 5.3456789.toExponential(3) + 10 =
+            <script>
+              document.write(
+                `${Number(5.3456789.toExponential(3)) + 10 }  / type : ${typeof Number(5.3456789.toExponential(3)) } `
+              )
+            </script><br>
+          </td>
+        </tr>
+        <tr>
+          <td>valueOf()</td>
+          <td>
+            해당 객체가 감싼 원시 값을 반환<br>
+            해당 객체(Number, String, Boolean, Object, Date 등)에서 기본데이터 타입(number, string 등)을 변환<br>
+            ex) Math.PI.valueOf() =
+            <script>
+              document.write(`type : ${typeof Math.PI} / valueOf : ${Math.PI.valueOf()}`)
+            </script><br>
+            ex) 100 == new Number(100) :
+            <script>
+              document.write(100 == new Number(100))
+            </script><br>
+            ex) 100 === new Number(100) :
+            <script>
+              document.write(100 === new Number(100))
+            </script><br>
+          </td>
+        </tr>
+        <tr>
+          <td>toString()</td>
+          <td>
+            특정한 객체가 가지는 문자열을 반환(Number 객체의 경우, 「2 ~ 36」 진법)<br>
+
+            ex) new Number(100).toString() :
+            <script>
+              document.write(`${new Number(100).toString()} / type : ${typeof new Number(100).toString(2)}`)
+            </script><br>
+            ex) new Number(100).toString(2) :
+            <script>
+              document.write(`${new Number(100).toString(2)} / type : ${typeof new Number(100).toString(2)}`)
+            </script><br>
+            ex) new Number(100).toString(8) :
+            <script>
+              document.write(`${new Number(100).toString(8)} / type : ${typeof new Number(100).toString(8)}`)
+            </script><br>
+            ex) new Number(100).toString(16) :
+            <script>
+              document.write(`${new Number(100).toString(16)} / type : ${typeof new Number(100).toString(16)}`)
+            </script><br>
+            ex) new Number(100).toString(3) :
+            <script>
+              document.write(`${new Number(100).toString(3)} / type : ${typeof new Number(100).toString(3)}`)
+            </script><br>
           </td>
         </tr>
       </tbody>

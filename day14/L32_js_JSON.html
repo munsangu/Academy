@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript JSON</title>
+</head>
+
+<body style="text-align: center;">
+  <main>
+    <h2>JSON(JavaScript Object Notation)</h2>
+    <ul style="list-style: none;">
+      <li>Javascript의 객체 표현법</li>
+      <li>JSON은 문자열로 표현될 수 있음</li>
+      <li>아주 가벼운 경량 데이터 교환 방식으로 문자열로만 이루어짐 (모든 프로그래밍 언어에 독립적)</li>
+      <li>데이터를 주고 받기 위해 사용됨</li>
+    </ul>
+    <hr>
+    <article>
+      <h2>JSON 작성법</h2>
+      <ul style="list-style: none;">
+        <li>JSON : "{ }"</li>
+        <li>const jsonData = "{ }";</li>
+        <li>const jsonData = '{"key1" : value1, "key2" : value2, ... }'; -> key의 이름 중복 불가</li>
+        <li> json 형식의 문자열을 Javascript에서 JSON.parse로 Object type으로 변경</li>
+        <li>const jsonData = {"name": "TonyStark", "age": 55, "live": false, "family":["mark1", "mark48", "mark7",
+          "mark50"]}<br>
+          jsonData.name :
+          <script>
+            // const jsonData = {"name": "TonyStark", "hero": "Ironman", "age": 55, "live": false, "family":["mark1", "mark48", "mark7", "mark50"]}; // iteral한 json 작성 방식
+
+            const data =
+              ' {"name": "TonyStark", "hero": "Ironman", "age": 55, "live": false, "family":["mark1", "mark48", "mark7", "mark50"]}' // 데이터를 주고 받는 json
+
+            // Javascript에서 문자열인 json을 사용하는 방법
+            const jsonData = JSON.parse(data);
+            document.write(jsonData.name)
+          </script><br>
+          jsonData["age"] :
+          <script>
+            document.write(jsonData["age"])
+          </script>
+        </li>
+      </ul>
+    </article>
+    <article>
+      <h2>Javascript - JSON</h2>
+      <ul style="list-style: none;">
+        <li>Javascript에서 JSON Object( )의 프로퍼티 설명서</li>
+        <li>new Object( )로 JSON 생성 가능</li>
+        <li>Javascript에서 JSON을 기본 데이터 타입처럼 iteral한 방식을 제공</li>
+        <li>{key : value} : literal 방식(Javascript 문법에서 사용되는 JSON)</li>
+        <li>"{'key': 'value'}" : 문자열로 표현된 JSON (서버에서 주고받는 데이터)</li>
+        <li>Javascript는 함수 지향 언어로 함수를 객체로 선언할 수 있음</li>
+        <li>function Person(name, age) {this.name = name, this.age = age} => new Person("TonyStark", "55") </li>
+        <li>Javascript 객처의 프로퍼티 설명들이 문자열 데이터로 전송되는 것 = JSON</li>
+        <script>
+          // new 연산자로 객체를 생성할 함수의 이름은 대문자로 작성
+          function Person(name, age) {
+            this.name = name;
+            this.age = age;
+          }
+          console.log(new Person("Hurk", 54))
+        </script>
+      </ul>
+    </article>
+    <article>
+      <h2>Javascript - JSON 사용</h2>
+      <ul style="list-style: none;">
+        <li> function ObjName(val1, val2,... ) {this.key1 = val1; this.key2 = val2; ... }</li>
+        <li> function ObjName(key1, key2,... ) {this.key1 = key1; this.key2 = key2; ... }</li>
+        <li> {key1: value1, key2: value2, ...}</li>
+        <li>
+          <pre style="border: 1px solid;">
+            function Person(name, age) {
+              this.name = name;
+              this.age = age;
+            }
+          </pre>
+        </li>
+        <li>
+          new Person("Tony", 60) : <script>
+          document.write(new Person("Tony", 60))
+        </script>
+        </li>
+        <li>json은 toString()을 매번 재정의 해야하기 때문에 출력되지 않음</li>
+        <li>JSON.stringify(new Person("Tony", 60)) : <script>
+          document.write(JSON.stringify(new Person("Tony", 60)))
+        </script></li>
+        <li>JSON.stringify( )로 출력된 문자열을 서버 통신에 json으로 사용하면 됨</li>
+      </ul>
+    </article>
+  </main>
+</body>
+
+</html>

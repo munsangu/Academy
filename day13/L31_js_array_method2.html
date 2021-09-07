@@ -12,53 +12,69 @@
     }
 
     form {
-      width: 30%;
-      margin: 0 auto;
+      width: 40%;
+      margin: 10px auto;
       background-color: thistle;
       border: 2px solid thistle;
       border-radius: 30px;
       color: whitesmoke;
       font-weight: bold;
     }
-    
+
     .menu_btn {
       display: flex;
-      flex-wrap:  wrap;
       align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
       margin: 0 auto;
     }
 
-   [type="button"], [type = "reset"] {
-     width: 100px;
-     height: 100px;
-     border:  1px solid skyblue;
-     border-radius: 20px;
-     background-color:  skyblue;
-     color: whitesmoke;
-     margin: 5px;
-     text-align: center;
-     font-size: 30px;
-   }
+    [type="button"],
+    [type="reset"] {
+      width: 100px;
+      height: 100px;
+      border: 1px solid skyblue;
+      border-radius: 20px;
+      background-color: skyblue;
+      color: whitesmoke;
+      margin: 5px;
+      text-align: center;
+      font-size: 30px;
+    }
 
-   [type="button"]:hover, [type = "reset"]:hover {
-     border: 2px solid yellow;
-     color: yellow;
-   }
+    [type="button"]:hover,
+    [type="reset"]:hover {
+      border: 2px solid yellow;
+      color: yellow;
+      cursor: pointer;
+    }
 
-   [type = "number"] {
-     text-align: center;
-     width: 20%;
-    border:  1px solid cornflowerblue;
-    border-radius: 5px;
-    background-color: cornflowerblue;
-    color: whitesmoke;
-   }
+    [type="number"] {
+      font-size:  20px;
+      text-align: center;
+      width: 20%;
+      border: 1px solid cornflowerblue;
+      border-radius: 5px;
+      background-color: cornflowerblue;
+      color: whitesmoke;
+    }
 
-   sub {
-    color: red;   
-  }
-   
-   
+    sub {
+      color: red;
+    }
+
+    .table {
+      border: 1px solid;
+      border-collapse: collapse;
+    }
+
+    tr,
+    th,
+    td {
+      border: 1px solid;
+      border-collapse: collapse;
+      width: 200px;
+    }
   </style>
 </head>
 
@@ -265,148 +281,299 @@ console.log(map1);
       </ul>
     </article>
     <article>
-      <h2>점 수 계 산 기</h2>
-      <ul>
-       <form class="menu_btn">
-          <li>  <input type="button" value="총점" onclick="totalRank()"></li>
-          <li> <input type="button" value="평균" onclick="avgRank()"></li>
-          <li> <input type="button" value="최소" onclick="minRank()"></li>
-          <li> <input type="button" value="최대" onclick="maxRank()"></li>
-          <li><input type="button" value="낙제" onclick="failRank()"></li>
-          <li><input type="button" value="만점" onclick="perfectRank()"></li>
-          <li><button type="button" name="button" onclick="convertRank()">변환</button></li>
-        </form>
-      </ul>
+      <h2>reduce( )</h2>
+      <p>배열의 각 요소에 대해 주어진 리듀서(reducer) 함수를 실행하고, 하나의 결과값을 반환</p>
+      <p>array.reduce(function(result, currentValue) {return 실행문})</p>
+      <p>ex) [10, 20, 30, 40, 50].reduce(더하기 함수) :
+        <script>
+          const array = [10, 20, 30, 40, 50];
+          document.write(array.reduce(function (x, y) {
+            return x + y
+          }));
 
-      <form name="someTestForm" action="index.html" method="POST">
-        <p><label>수학 점수 : <input type="number"  class= "score" name="m" value="70"></label></p>
-        <p><label>영어 점수 : <input type="number"  class= "score" name="e" value="90"></label></p>
-        <p><label>화학 점수 : <input type="number"  class= "score" name="c" value="100"></label></p>
-        <p><label>국사 점수 : <input type="number"  class= "score"  name="h" value="30"></label></p>
-        <p><label>국어 점수 : <input type="number"  class= "score"  name="k" value="70"></label></p>
-        <p><label>총 점수 : <input type="number" name="total" value="0"></label></p>
-        <p><label>평균 점수 : <input type="number" name="avg" value="0"></label></p>
-        <p><label>최소 점수 : <input type="number" name="min" value="0"></label></p>
-        <p><label>최대 점수 : <input type="number" name="max" value="0"></label></p>
-        <p><label>낙제 유무 : <input type="number" name="is_f" value="0"></label><br><sub>(낙제 : 50점 미만 과목)</sub></p>
-        <p><label>만점 유무 : <input type="number" name="is_ten" value="0"></label></p>
-        <p><input type="reset"></p>
-      </form>
-      <script>
-        const form = document.forms["someTestForm"];
-        // console.log(form[0]) <input type="number" name="m" value="70">
-        // console.log(form[0].value)
-        const rank = document.querySelectorAll('[type="number"].score');
-        const rankList = Array.from(rank);
-        // console.log(rankList);
-        // domList를 새로운 배열로 바꾸는 방법
-        // Array.from()
-        const total = document.querySelector("[name='total']");
-        const avg = document.querySelector("[name='avg']");
-        const min = document.querySelector("[name='min']");
-        const max = document.querySelector("[name='max']");
-        const is_f = document.querySelector("[name='is_f']");
-        const is_ten = document.querySelector("[name='is_ten']");
+          // let arrSum = 0;
+          // array.forEach((i) => {arrSum += i})
+          // document.write(arrSum)
+        </script>
+      </p>
+      <p>ex) [10, 20, 30, 40, 50].reduce(빼기 함수) :
+        <script>
+          document.write(array.reduce(function (x, y) {
+            return x - y
+          }));
 
-        // console.log(rank[0]); <input type="number" name="m" value="70">
+          // let arrSum = 0;
+          // array.forEach((i) => {arrSum += i})
+          // document.write(arrSum)
+        </script>
+      </p>
+    </article>
+    <article>
+      <h2>reduceRight( )</h2>
+      <p>배열의 각 값 (오른쪽에서 왼쪽으로)을 하나의 값으로 줄임</p>
+      <p>array.reduceRight(function(result, currentValue) {return 실행문})</p>
+      <p>ex) [10, 20, 30, 40, 50].reduceRight(더하기 함수) :
+        <script>
+          document.write(array.reduceRight(function (x, y) {
+            return x + y
+          }));
 
-        function totalRank() {
-          let sum = 0;
-          rank.forEach((val) => {
-           sum += Number(val.value);
-          })
-          total.value = sum;
-        }
+          // let arrSum = 0;
+          // array.forEach((i) => {arrSum += i})
+          // document.write(arrSum)
+        </script>
+      </p>
+      <p>ex) [10, 20, 30, 40, 50].reduce(빼기 함수) :
+        <script>
+          document.write(array.reduceRight(function (x, y) {
+            return x - y
+          }));
 
-        function avgRank() {
-          let sum = 0;
-          let avgScore  = 0;
-          rank.forEach((val) => {
-           sum += Number(val.value);
-          })
-          avgScore = sum / rank.length;
-          avg.value = avgScore;
-        }
+          // let arrSum = 0;
+          // array.forEach((i) => {arrSum += i})
+          // document.write(arrSum)
+        </script>
+      </p>
+    </article>
+    <article>
+      <h2>find()</h2>
+      <p>주어진 판별 함수를 만족하는 첫 번째 요소의 값을 반환합니다. 그런 요소가 없다면 undefined를 반환</p>
+      <p>array.find(function() {})</p>
+      <p>ex) ["a", "b", "c", "d", "e"].find(x => x === "d") :
+        <script>
+          document.write(["a", "b", "c", "d", "e"].find(x => x === "d"));
+        </script><br>
+        ex) ["a", "b", "c", "d", "e"].find(x => x === "z") :
+        <script>
+          document.write(["a", "b", "c", "d", "e"].find(x => x === "z"));
+        </script><br>
+        ex) [10, 20, 30, 40, 50].find(x => x > 30) :
+        <script>
+          document.write(array.find(x => x  > 30));
+        </script><br>
+        ex) [10, 20, 30, 40, 50].find(x => x < 10) : <script>
+          document.write(array.find(x => x < 10)); </script> </p> </article> <article>
+            <h2>findIndex()</h2>
+            <p>주어진 판별 함수를 만족하는 배열의 첫 번째 요소에 대한 인덱스를 반환합니다. 만족하는 요소가 없으면 -1을 반환합니다.</p>
+            <p>array.findIndex(function() {})</p>
+            <p>ex) ["a", "b", "c", "d", "e"].findIndex(x => x === "d") :
+              <script>
+                document.write(["a", "b", "c", "d", "e"].findIndex(x => x === "d"));
+              </script><br>
+              ex) ["a", "b", "c", "d", "e"].findIndex(x => x === "z") :
+              <script>
+                document.write(["a", "b", "c", "d", "e"].findIndex(x => x === "z"));
+              </script><br>
+              ex) [10, 20, 30, 40, 50].findIndex(x => x > 30) :
+              <script>
+                document.write(array.findIndex(x => x > 30));
+              </script><br>
+              ex) [10, 20, 30, 40, 50].findIndex(x => x < 10) : <script>
+                document.write(array.findIndex(x => x < 10)); </script> </p> 
+                </article> 
+                <article>
+                  <h2>array.includes()</h2>
+                  <p>배열이 특정 요소를 포함하고 있는지 판별</p>
+                  <p>ex) ["a", "b", "c", "d", "e"].includes("d") :
+                    <script>
+                      document.write(["a", "b", "c", "d", "e"].includes( "d"));
+                    </script><br>
+                    ex) ["a", "b", "c", "d", "e"].includes("z") :
+                    <script>
+                      document.write(["a", "b", "c", "d", "e"].includes("z"));
+                    </script><br>
+                 </p> 
+                </article>
+                <article>
+                  <h2>lastIndexOf()</h2>
+                  <p>배열에서 주어진 값을 발견할 수 있는 마지막 인덱스를 반환하고, 요소가 존재하지 않으면 -1을 반환합니다. 배열 탐색은 fromIndex에서 시작하여 뒤로 진행</p>
+                  <p>array.lastIndexOf()</p>
+                  <p>
+                    ex) ["a", "b", "c", "d", "e"].lastIndexOf("d") :
+                    <script>
+                      document.write(["a", "b", "c", "d", "e"].lastIndexOf( "d"));
+                    </script><br>
+                    ex) ["a", "b", "c", "d", "e"].lastIndexOf("z") :
+                    <script>
+                      document.write(["a", "b", "c", "d", "e"].lastIndexOf("z"));
+                    </script><br>
+                  </p>
+                </article>
+                <article>
+                  <h2>keys()</h2>
+                  <p>배열의 각 인덱스를 키 값으로 가지는 새로운 Array Iterator 객체를 반환</p>
+                  <p>
+                    ex) ["a", "b", "c", "d", "e"] : <script>
+                      const iterator = ["a", "b", "c", "d", "e"].keys();
+                      for(let key of iterator) {
+                        document.write(`${key} / `)
+                      }
+                    </script>
+                  </p>
+                </article>
+                <article>
+                  <h2>Array.isArray()</h2>
+                  <p>인자가 Array인지 판별</p>
+                  <p>
+                    ex) Array.isArray([1, 2, 3]) : <script>
+                      document.write(Array.isArray([1, 2, 3]))
+                      document.write(` / type : ${typeof [1,2,3]}`)
+                    </script> <br>
+                    ex) Array.isArray(new Array(1, 2, 3)) : <script>
+                      document.write(Array.isArray(new Array(1, 2, 3)))
+                      document.write(` / type : ${typeof [new Array(1, 2, 3)]}`)
+                    </script> <br>
+                    ex) Array.isArray({name: "Tony", age: 100}) : <script>
+                      document.write(Array.isArray({name: "Tony", age: 100}))
+                      document.write(` / type : ${typeof {name: "Tony", age: 100}}`)
+                    </script>
+                  </p>
+                </article>
+                
+                <article>
+                  <h2>점 수 계 산 기</h2>
+                  <ul>
+                    <form class="menu_btn">
+                      <li> <input type="button" value="총점" onclick="totalRank()"></li>
+                      <li> <input type="button" value="평균" onclick="avgRank()"></li>
+                      <li> <input type="button" value="최소" onclick="minRank()"></li>
+                      <li> <input type="button" value="최대" onclick="maxRank()"></li>
+                      <li><input type="button" value="낙제" onclick="failRank()"></li>
+                      <li><input type="button" value="만점" onclick="perfectRank()"></li>
+                      <li><input type="button"></li>
+                      <li><button type="button" name="button" onclick="convertRank()">변환</button></li>
+                      <li><input type="button"></li>
+                    </form>
+                  </ul>
 
-        function minRank() {
-          let tempMin = Infinity;
-          rank.forEach((val) => {
-            // console.log(Number(val.value))
-            if(tempMin > Number(val.value)) {
-              tempMin =  Number(val.value)
-            }
-           })
-           min.value = tempMin;
-          }
+                  <form name="someTestForm" action="index.html" method="POST">
+                    <p><label>수학 점수 : <input type="number" class="score" name="m" value="70" min="0" max="100"></label></p>
+                    <p><label>영어 점수 : <input type="number" class="score" name="e" value="90" min="0" max="100"></label></p>
+                    <p><label>화학 점수 : <input type="number" class="score" name="c" value="100" min="0" max="100"></label></p>
+                    <p><label>국사 점수 : <input type="number" class="score" name="h" value="30" min="0" max="100"></label></p>
+                    <p><label>국어 점수 : <input type="number" class="score" name="k" value="70" min="0" max="100"></label></p>
+                    <p><label>&nbsp&nbsp총 점수 : <input type="number" name="total" value="0"></label></p>
+                    <p><label>평균 점수 : <input type="number" name="avg" value="0"></label></p>
+                    <p><label>최소 점수 : <input type="number" name="min" value="0"></label></p>
+                    <p><label>최대 점수 : <input type="number" name="max" value="0"></label></p>
+                    <p><label>낙제 개수 : <input type="number" name="is_f" value="0"></label><br><sub>(낙제 : 50점 미만 과목)</sub>
+                    </p>
+                    <p><label>만점 개수 : <input type="number" name="is_ten" value="0"></label></p>
+                    <p><input type="reset"></p>
+                  </form>
 
-        function maxRank() {
-          let tempMax = -Infinity;
-          rank.forEach((val) => {
-            // console.log(Number(val.value))
-            if(tempMax < Number(val.value)) {
-              tempMax =  Number(val.value)
-            }
-           })
-           max.value = tempMax;
-          }
+                  <script>
+                    const form = document.forms["someTestForm"];
+                    // console.log(form[0]) <input type="number" name="m" value="70">
+                    // console.log(form[0].value)
+                    const rank = document.querySelectorAll('[type="number"].score');
+                    const rankList = Array.from(rank);
+                    // console.log(rankList);
+                    // domList를 새로운 배열로 바꾸는 방법
+                    // Array.from()
+                    const total = document.querySelector("[name='total']");
+                    const avg = document.querySelector("[name='avg']");
+                    const min = document.querySelector("[name='min']");
+                    const max = document.querySelector("[name='max']");
+                    const is_f = document.querySelector("[name='is_f']");
+                    const is_ten = document.querySelector("[name='is_ten']");
 
-        function failRank() {
-          // 낙제 과목 개수 표시 코드
-          // let count = 0
-          // rank.forEach((val) => {
-          //   if(Number(val.value) < 50) {
-          //     count +=1;
-          //   }
-          // })
-          // is_f.value = count;
-
-          let failResult = true;
-          rankList.every((val) => {
-            if(Number(val.value) < 50) {
-              failResult = false;
-            }
-          })
-          is_f.value = Number(failResult);
-          }
-
-          function perfectRank() {
-          // 만점 과목 개수 표시 코드
-          // let count = 0
-          // rank.forEach((val) => {
-          //   if(Number(val.value) === 100) {
-          //     count +=1;
-          //   }
-          // })
-          // is_ten.value = count;
-
-          let perfectRank = false;
-           rankList.some((val) => {
-            if(Number(val.value) === 100) {
-              perfectRank = true;
-            }
-            is_ten.value = Number(perfectRank);
-          })
-          }
-
-          function convertRank() {
-          let convertScore = [];
-          rank.forEach((val, i) => {
-            convertScore[i] = (Number(val.value) * 0.045).toFixed(2)
-            // Number.toFixed(x) : 숫자를 고정 소수점 표기법으로 표기해서 반환
-          })
-
-          convertScore.forEach((val, i ) => {
-            form[i].value = convertScore[i] ;
-          })
-          }
+                    // console.log(rank[0]); <input type="number" name="m" value="70">
 
 
+                    // console.log(table)
+                    function totalRank() {
+                      let sum = 0;
+                      rank.forEach((val) => {
+                        sum += Number(val.value);
+                      })
+                      total.value = sum;
+                    }
 
+                    function avgRank() {
+                      let sum = 0;
+                      let avgScore = 0;
+                      rank.forEach((val) => {
+                        sum += Number(val.value);
+                      })
+                      avgScore = sum / rank.length;
+                      avg.value = avgScore;
+                    }
 
+                    function minRank() {
+                      let tempMin = Infinity;
+                      rank.forEach((val) => {
+                        // console.log(Number(val.value))
+                        if (tempMin > Number(val.value)) {
+                          tempMin = Number(val.value)
+                        }
+                      })
+                      min.value = tempMin;
+                    }
 
+                    function maxRank() {
+                      let tempMax = -Infinity;
+                      rank.forEach((val) => {
+                        // console.log(Number(val.value))
+                        if (tempMax < Number(val.value)) {
+                          tempMax = Number(val.value)
+                        }
+                      })
+                      max.value = tempMax;
+                    }
 
-      
-      </script>
+                    function failRank() {
+                      // 낙제 과목 개수 표시 코드
+                      let count = 0
+                      rank.forEach((val) => {
+                        if(Number(val.value) < 50) {
+                          count +=1;
+                        }
+                      })
+                      is_f.value = count;
+
+                      // let failResult = false;
+                      // rankList.some((val) => {
+                      //   if (Number(val.value) < 50) {
+                      //     failResult = true;
+                      //   }
+                      //   is_f.value = Number(failResult);
+                      // })
+                      
+                    }
+
+                    function perfectRank() {
+                      // 만점 과목 개수 표시 코드
+                      let count = 0
+                      rank.forEach((val) => {
+                        if(Number(val.value) === 100) {
+                          count +=1;
+                        }
+                      })
+                      is_ten.value = count;
+                    }
+
+                    //   let perfectRank = false;
+                    //   rankList.some((val) => {
+                    //     if (Number(val.value) === 100) {
+                    //       perfectRank = true;
+                    //     }
+                    //     is_ten.value = Number(perfectRank);
+                    //   })
+                    // }
+
+                    function convertRank() {
+                      let convertScore = [];
+                      rank.forEach((val, i) => {
+                        convertScore[i] = (Number(val.value) * 0.045).toFixed(2)
+                        // Number.toFixed(x) : 숫자를 고정 소수점 표기법으로 표기해서 반환
+                      })
+
+                      convertScore.forEach((val, i) => {
+                        form[i].value = convertScore[i];
+                      })
+                    }
+                  </script>
     </article>
   </main>
 </body>

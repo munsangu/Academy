@@ -1,0 +1,17 @@
+#calendarTable  {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%
+}
+
+#calendarTable td, #calendarTable th {
+  border: 1px solid black;
+}
+
+#calendarTable td:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+#calendarTable .schedule {
+  display: none;
+}
