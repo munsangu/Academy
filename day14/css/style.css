@@ -6,12 +6,29 @@
 
 #calendarTable td, #calendarTable th {
   border: 1px solid black;
+  text-align: center;
+}
+
+#calendarTable td:active {
+  color: rgb(250, 250, 250);
+  background-color: rgb(100, 100, 120);
 }
 
 #calendarTable td:hover {
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(90, 90, 100);
+  box-shadow: 2px 2px 5px black;
 }
 
 #calendarTable .schedule {
-  display: none;
+  visibility: hidden;
+}
+
+#calendarTable td.disabled {
+  color: rgb(150,150,150);
+  background-color: rgb(50,50,60);
+  box-shadow: 0 0;
+}
+
+#calendarTable td.disabled .schedule{
+  visibility: hidden !important;
 }

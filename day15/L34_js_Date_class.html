@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Date Class</title>
+</head>
+
+<body>
+  <article>
+    <h2>Date 클래스</h2>
+    <ul>
+      <li>new Date().toSting() :
+        <script>document.write(new Date())</script>
+      </li>
+      <li>Number(new Date()) :
+        <script>document.write(Number(new Date()))</script>
+      </li>
+      <li>Number(new Date("1970-01-01")) :
+        <script>document.write(Number(new Date("1970-01-01")))</script>
+      </li>
+      <li>(new Date(year,month(0~11),day(0~),hours,min,s,ms))
+      </li>
+      <li>new Date(2021,8) :
+        <script>document.write(new Date(2021,8))</script>
+      </li>
+      <li>new Date().setFullYear(2021,8,1) :
+        <script>document.write(new Date().setFullYear(2021,8,1))</script>
+      </li>
+      <li>new Date(날짜).getDay() : 0~6(일~토)</li>
+      <li>new Date(2021,8,1).getDay() :
+        <script>document.write(new Date(2021,8,1).getDay())</script>
+      </li>
+      <li>new Date(날짜)getDate() : 해당하는 day를 출력
+        (0을 넣으면 해당 월의 전달의 마지막 일을 알수 있다.)
+      </li>
+      <li>new Date(2021,8,0).getDate() :
+        <script>document.write(new Date(2021,8,0))</script>
+      </li>
+  </article>
+  <article>
+    <h2>Element.classList</h2>
+    <p> html 배열 타입으로 자바스크립트 배열과는 다른 함수를 제공한다.</p>
+    <p>요소는 복수의 클래스를 가질 수 있다.</p>
+    <p>Element.class = "a b c" (사용하지않음)</p>
+    <p>Element.classList = [a, b, c] (O)</p>
+    <p>스타일이 적용된 클래스를 추가 삭제하기 위해 많이 사용된다.</p>
+    <ul>
+      <li>classList.add("ClassName") : array.push() 비슷한 함수로 클래스를 추가한다.</li>
+      <li>classList.remove("ClassName") : array.slice() 비슷한 함수로 클래스를 제거한다.</li>
+      <li>classList.toggle("ClassName") : 해당 클래스가 있으면 삭제 없으면 추가</li>
+    </ul>
+  </article>
+</body>
+
+</html>
