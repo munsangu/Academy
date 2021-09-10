@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Action Sequence</title>
+  <script defer src="./js/main.js"></script>
+  <!-- <script async src="./js/main.js"></script>-->
+
+</head>
+
+<body>
+  <h1>Javascript 동작 순서</h1>
+  <ul>
+    <li>li에 마우스를 올리면 색이 바뀜</li>
+    <li>li node에 mouseenter를 재정의</li>
+  </ul>
+  <article>
+    <h2>HTML 문서에 선언된 스크립트의 동작 순서</h2>
+    <ol>
+      <li>브라우저는 HTML 문서를 CSS와 병합해 DOMTree 구조를 생성</li>
+      <li>브라우저가 병합된 구조를 보고 화면에 그래픽으로 객체를 표현(순차적 언어)</li>
+      <li>순서대로 객체를 출력하던 중 Javascript 구문을 발견하면 순서대로 그것을 실행함</li>
+      <li>이때 Javascript가 node 객체를 검색하던 중이면 브라우저가 해당 node 객체를 출력해야 찾을 수 있음</li>
+    </ol>
+  </article>
+  <article>
+    <h2>순차적 언어인 HTML과 Javascript가 문제를 일으키기 않게 하는 방법</h2>
+    <ol>
+      <li>Javascript를 모든 node가 생성된 가장 아래에 작성</li>
+      <li>onload : 해당하는 node가 생성되었는지 확인 / window.onload = function() { }</li>
+      <li>window 객체가 완전히 생성된 시점 즉, node가 모두 load된 시점에 Javascript를 작성하면 됨</li>
+      <li>&ltscript defer src=" "&gt&lt/script&gt: HTML문서를 다 다운받고 load한 시점에 참조된 문서를 다운</li>
+    </ol>
+  </article>
+
+</body>
+
+</html>

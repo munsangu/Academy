@@ -42,7 +42,7 @@ function printCalendar(paraMonth,paraYear=(new Date().getYear()+1900)){
 
 
 
-  //활성화된 해당 월 출력
+  //활성화된 해당 월 출력n
   for(let i=firstDay,d=1; i<lastDay+firstDay; i++){
     tdList[i].querySelector(".day").innerText=d++;
     tdList[i].classList.add("active"); //활성화된 td 스타일 추가
