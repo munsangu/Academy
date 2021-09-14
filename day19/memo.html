@@ -1,15 +1,13 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To Do List with time</title>
-    <link rel="stylesheet" href="memo.css" />
-    <script defer src="dateMemo.js" charset="utf-8"></script>
+    <meta charset="utf-8">
+    <title>할 일 목록 시간 메모장</title>
+    <link rel="stylesheet" href="./css/memo.css">
+    <script defer src="./js/date_memo.js" charset="utf-8"></script>
   </head>
   <body>
-    <!--
+<!--
 
 10:10=>1010
 10:10=>60*10+10=>610/60:610%60=>
@@ -23,9 +21,10 @@ const d_2021_09_10=[세수하기,도시락싸기,운전하기];
  -->
     <main>
       <h1>할 일 목록 메모장</h1>
+      <!-- article.memo>.container>h3.title+ul.schedule>li -->
       <article id="memo">
         <div class="container">
-          <h3 class="title"></h3>
+          <h3 class="title">9월 10일 할 일</h3>
           <ul class="schedule">
             <li>9:00 운전하기.</li>
             <li>10:00 세수하기
@@ -38,14 +37,14 @@ const d_2021_09_10=[세수하기,도시락싸기,운전하기];
               <button value=''class="delete" type="button">X</button></li>
           </ul>
         </div>
-        <form action="../day16/L33_js_calender.html" class="insert_schedule" name="insertSchedule">
+        <form class="insert_schedule" name="insertSchedule">
           <label>
             <input type="time" name="registTime" value="09:00">
           </label>
           <label>
-            <input type="text" name="registText" value="일어나기" />
+            <input type="text" name="registText" value="일어나기">
           </label>
-          <button type="button" name="regist">스케줄추가</button>
+          <button type="button" name="regist" >스케줄추가</button>
         </form>
       </article>
     </main>

@@ -1,12 +1,45 @@
+h1 {
+  text-align: center;
+  font-family: serif;
+}
+
 #calendarTable  {
   border: 1px solid black;
   border-collapse: collapse;
-  width: 100%
+  width: 80%;
+  margin: 20px auto;
+}
+
+caption {
+  color: skyblue;
+}
+
+caption button {
+  color : skyblue;
+  background-color:aquamarine;
+  border-radius: 10px;
+  border: 1px solid white; 
+}
+#calendarTable th {
+  background-color: wheat;
+}
+
+#calendarTable th:first-child{
+  color: red;
+}
+
+#calendarTable th:last-child {
+  color: blue;
 }
 
 #calendarTable td, #calendarTable th {
   border: 1px solid black;
   text-align: center;
+}
+
+#calendarTable td>a {
+  text-decoration: none;
+  color: black;
 }
 
 #calendarTable td:active {
@@ -19,16 +52,9 @@
   box-shadow: 2px 2px 5px black;
 }
 
-#calendarTable .schedule {
-  visibility: hidden;
-}
-
-#calendarTable td.disabled {
+#calendarTable td.disabled, #calendarTable td.disabled>a {
   color: rgb(150,150,150);
   background-color: rgb(50,50,60);
   box-shadow: 0 0;
-}
-
-#calendarTable td.disabled .schedule{
-  visibility: hidden !important;
+  pointer-events: none;
 }

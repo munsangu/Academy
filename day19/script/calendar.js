@@ -1,9 +1,28 @@
+// DB 에서 설계된 table을 받아온 리스트
+const d_09=
+  {
+    13:{
+      430:"기상",
+      450:"에이콘아카데미 출근",
+      1080: "퇴근",
+      1170: "집 도착",
+      1328: "취침"
+    },
+    14:{
+      430:"기상",
+      450:"에이콘아카데미 출근",
+      1080: "퇴근",
+      1170: "집 도착",
+      1328: "취침"
+    }
+}
+
 const tdList= document.querySelectorAll("#calendarTable td");
-//new Date().getMonth() 현재 달의 -1을 반환(0~11)
+//new Date().getMonth() 현재 달의 -1을 반환한다.(0~11)
 printCalendar(new Date().getMonth()+1);
 
 function printCalendar(paraMonth,paraYear=(new Date().getYear()+1900)){
-  let dateMonth=paraMonth-1; //Date()는 month 가 0~11까지
+  let dateMonth=paraMonth-1; //Date()는 month 가 0~11까지다.
   //9월 마지막 일 구하기
   let lastDay=new Date(paraYear,dateMonth+1,0).getDate();
   //9월의 시작하는 요일 구하기
@@ -19,9 +38,13 @@ function printCalendar(paraMonth,paraYear=(new Date().getYear()+1900)){
     this.text=`${this.year}년도 ${this.month}월`;
     this.value=`${this.year}-${this.month}`;
   }
-  const nextB=(paraMonth+1==13)?new ButtonValue(1,paraYear+1):new ButtonValue(paraMonth+1,paraYear);
+  const nextB=(paraMonth+1==13)
+                ?new ButtonValue(1,paraYear+1)
+                :new ButtonValue(paraMonth+1,paraYear);
 
-  const preB=(paraMonth-1==0)?new ButtonValue(12,paraYear-1):new ButtonValue(paraMonth-1,paraYear);
+  const preB=(paraMonth-1==0)
+                ?new ButtonValue(12,paraYear-1)
+                :new ButtonValue(paraMonth-1,paraYear);
 
   document.getElementById("nextMonth").innerText=nextB.text;
   document.getElementById("nextMonth").value=nextB.value;
@@ -32,14 +55,29 @@ function printCalendar(paraMonth,paraYear=(new Date().getYear()+1900)){
   document.getElementById("toDate").innerText=`${paraYear}. ${paraMonth}`;
   //document.getElementById("toDate").innerText=new Date(paraYear,dateMonth);
 
+function scheduleList(event) {
+  console.log(event.target)
+}
 
-
-  //활성화된 해당 월 출력n
+  
   for(let i=firstDay,d=1; i<lastDay+firstDay; i++){
-    tdList[i].querySelector(".day").innerText=d++;
+    ///////////////////해당 일의 클릭 이벤트 정의(일정 리스트 등록)/////////////
+    tdList[i].addEventListener("click", scheduleList)
+    ///////////////////활성화된 해당 월 출력//////////////////////////////////////
+    tdList[i].querySelector(".day").innerText=d;
     tdList[i].classList.add("active"); //활성화된 td 스타일 추가
     tdList[i].classList.remove("disabled"); //비활성화된 td 스타일 삭제
-
+    ///////////////////해당 월의 일정 출력//////////////////////////////////////
+    let li_html = "";
+    if(d_09[d]) {
+      for(let key in d_09[d]){
+        li_html+='<li>'
+        li_html+=`${d_09[d][key]}`
+        li_html+='</li>'
+      }
+    }
+    tdList[i].querySelector(".schedule").innerHTML = li_html;
+    d++;
   }
 
   //비활성화된 전달의 출력
