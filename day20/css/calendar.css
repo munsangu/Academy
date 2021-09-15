@@ -1,0 +1,139 @@
+
+
+#calendarTable{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%
+}
+/* table 은 가로크기가 가변이다    table-layout: auto default;
+  table-layout: fixed;
+  width: 700px;
+  table>tr>td 직접적으로 가로를 지정하는 것이 좋다.
+*/
+table#calendarTable{
+  table-layout: fixed;
+  width: 700px;
+}
+#calendarTable td,#calendarTable th{
+  border: 1px solid black;
+  text-align: center;
+  width: 14.2%
+}
+#calendarTable td .day{
+  margin: 0;
+  padding: 5px 0
+}
+#calendarTable th{
+  background-color: rgb(0,0,0);
+  color: rgb(255,255,255);
+}
+
+/* .ative : 활성화 된 td */
+#calendarTable td.active{
+  color: rgb(250,250,250);
+  background-color: rgb(100,100,120);
+}
+
+#calendarTable td.active:hover .day{
+  background-color: rgba(0,0,0,.2)
+}
+/*  일요일 색 설정 */
+/* nth-child(1)==first-child */
+#calendarTable td.active:nth-child(1){
+  background-color: rgb(140,50,30);
+}
+/* 토요일 색 설정 */
+/* nth-child(7)==last-child */
+#calendarTable td.active:nth-child(7){
+  background-color: rgb(30,50,140);
+}
+
+/* 스케줄을 마우스를 올릴 때만 활성화 한다*/
+/*
+#calendarTable td:hover .schedule{visibility: visible;}
+#calendarTable .schedule{visibility: hidden;} */
+
+/* .disabled : 비활성화 된 td */
+#calendarTable td.disabled{
+  color: rgb(150,150,150);
+  background-color: rgb(50,50,60);
+  box-shadow: 0 0;
+}
+/* #calendarTable td 아래에 있는 것이 적용 우선 순위가 높다  */
+#calendarTable td.disabled .memo{
+  visibility: hidden !important;
+}
+.memo .container{
+  width: 100%;
+  background-color: rgba(200,200,100,.4);
+  margin: auto;
+  height: 120px;
+  overflow : hidden;
+
+}
+.memo .title{
+  text-align: center;
+}
+.memo ul.schedule{
+  margin: 5px 0;
+  list-style: none;
+  padding: 0;}
+  /* 1. 고정된 width의 element에서 css로 text 처리방법
+  width : 100px; (px을 고정 값으로 설정한다. 이는 자신이 원하는 만큼 설정하면 될것이다.)
+  white-space : nowrap; (text의 길이가 길어지면 자동으로 줄이 바뀌는데 이를 한줄로 설정한다.)
+  overflow : hidden; (width가 고정되어있는 상태에서 text가 길어지면 해당 element를 넘어서는데 이를 표시하지 않는다.)
+  text-overflow : ellipsis; (넘어간 text대신 ...으로 text를 대체한다.)
+  */
+.memo ul.schedule li{
+  padding: 2px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  width : 100px;
+  white-space : nowrap;
+  overflow : hidden;
+  text-overflow : ellipsis;
+  font-size: 12px;
+}
+.memo ul.schedule li:hover{
+  border-bottom: 1px solid rgba(0,0,0,.5);
+}
+.memo ul.schedule li .delete{
+  float: right;
+  margin-right: 5px;
+  background-color: rgba(0,0,0,.1);
+  border: 0;
+}
+.memo ul.schedule li .time{
+  float: left;
+  margin-left: 5px;
+}
+.memo ul.schedule li .delete:hover{
+  background-color: rgba(0,0,0,.3);
+  box-shadow: 1px 1px black;
+}
+.memo form.insert_schedule{
+  width: 200px;
+  margin:20px auto 0;
+  text-align: center;
+/* input 요소는 inline-block 속성으로 inline 속성인 글자와 같이 정렬된다. */
+}
+
+
+
+
+#calendarTable.white_mode td{
+  background-color: rgb(255,255,255);
+  color: rgba(0,0,0);
+}
+#calendarTable.white_mode th{
+  background-color: rgb(200,200,200);
+  color: rgba(0,0,0);
+}
+#calendarTable.white_mode td.active:nth-child(1){
+  background-color: rgba(250,0,0,.2);
+}
+#calendarTable.white_mode td.active:nth-child(7){
+  background-color: rgba(0,0,250,.2);
+}
+#calendarTable.white_mode td.disabled{
+    background-color: rgba(0,0,0,.1);
+}
