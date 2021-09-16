@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Model</title>
+    <link rel="stylesheet" href="box.css" />
+  </head>
+  <body>
+    <h1>Box Modeiling</h1>
+    <div class="block">
+      <h2>block의 box modeling</h2>
+      <p>block: 가로, 세로를 가질 수 있고 margin으로 block를 정렬하는 성질</p>
+    </div>
+    <div class="inline_block">
+      <h2>inline-block의 box modeling</h2>
+      <p>
+        글씨 안에 들어가는 block(block 속성과 같지만 margin으로 박스를 정렬하지
+        않음 auto 기능 없음)
+      </p>
+      배<img src="./img/3.jpg" alt="배경" />경
+    </div>
+    <div class="inline">
+      <h2>
+        inline의 box modeling(padding, border, outline만 있음 -> box로 볼 수
+        없음)
+        <br />가로, 세로 -> 컨텐츠 크기 만큼 설정됨
+      </h2>
+      <strong>inline 속성의 strongTag</strong>
+    </div>
+    <hr>
+    <div class="block2">
+      <h2>block의 border-radius</h2>
+      <p>box-shadow: 0 -50px 10px black, 0 -50px 10px red ;</p>
+    </div>
+    <hr>
+    <div class="block3">
+      <h2>block의 border-radius</h2>
+      <p></p>
+    </div>
+  </body>
+</html>

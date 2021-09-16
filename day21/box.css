@@ -1,0 +1,63 @@
+body {
+  text-align: center;
+}
+
+hr {
+  border:10px solid blue;
+  margin-top: 100px;
+}
+
+.block p {
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid;
+  outline: 2px dotted red;
+  outline-offset: 20px;
+}
+
+.inline_block img{
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid;
+  outline: 2px dotted red;
+  outline-offset: 20px;
+}
+
+.inline strong {
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid;
+  outline: 2px dotted red;
+  outline-offset: 20px;
+}
+
+.block2 p{
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 100%;
+  outline: 2px dotted red;
+  outline-offset: 20px;
+  background-color: lightgreen;
+  box-shadow: 0 -50px 10px black, 0 -50px 10px red ;
+  text-shadow: 0 -5px 1px black;
+}
+
+.block3 p{
+  width: 600px;
+  height: 200px;
+  margin: 50px auto;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 600px;
+  outline: 2px dotted red;
+  outline-offset: 20px;
+}

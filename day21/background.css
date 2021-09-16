@@ -1,0 +1,122 @@
+body {
+  background-color: wheat;
+  text-align: center;
+  color: skyblue;
+}
+
+ul {
+  border: 3px solid lemonchiffon;
+  list-style: none;
+}
+
+hr {
+  border: 3px solid lightcoral;
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+  border: 3px solid lemonchiffon;
+  background-size: cover;
+  margin: 10px auto;
+}
+
+.image img {
+  width: 150px;
+  height: 150px;
+}
+
+.image2 {
+  background-image: url("./img/2.jpg"), url("./img/3.jpg");
+  width: 300px;
+  height: 300px;
+  border: 3px solid lemonchiffon;
+  background-size: 50px 50px, contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 10px auto;
+}
+
+.image3 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-color:lavender;
+  background-clip: padding-box;
+}
+
+.image4 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-color:lavender;
+  background-clip: border-box;
+}
+
+.image5 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-color:lavender;
+  background-clip: content-box;
+}
+
+.image6 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-image: url('./img/1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+}
+
+.image7 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-image: url('./img/1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+}
+
+.image8 {
+  width: 300px;
+  height: 300px;
+  border: 20px dotted lemonchiffon;
+  margin: 10px auto;
+  padding: 10px;
+  background-image: url('./img/1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: padding-box;
+}
+
+.image9 {
+  border: 1px solid lemonchiffon;
+  width: 500px;
+  height: 500px;
+  margin: 10px auto;
+  background-image: url('./img/1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+p {
+  background-color: lightblue;
+  position: relative;
+  top: -5%;
+}
+
