@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Position</title>
+    <link rel="stylesheet" href="position.css" />
+  </head>
+  <body>
+    <h1>
+      position 요소, node 객체의 위치를 정의<br />(static, relative, absolute,
+      fixed, sticky)
+    </h1>
+    <article>
+      <h2>position: static (default)</h2>
+      <p>모든 요소, node 객체는 위치를 static으로 정의함</p>
+      <ul>
+        <li>요소의 배치는 순차적(↓)이며 왼쪽에서부터 오른쪽으로 배치됨</li>
+        <li>자식 요소는 부모 요소의 위치를 기준으로 배치됨</li>
+        <li>top, right, bottom, left 사용 불가</li>
+      </ul>
+    </article>
+    <article>
+      <h2>position: relative (상대적 위치)</h2>
+      <div id="parent">
+        <div id="child">relative</div>
+      </div>
+      <p>-> 자식 박스를 상대적 위치로 top 25% / left 25% 이동</p>
+      <p>
+        <button type="button" onclick="child.style.top = '100px'">↓</button>
+        <button type="button" onclick="child.style.left = '-100px'">←</button>
+        <button type="button" onclick="child.style.left = '100px'">→</button>
+        <button type="button" onclick="child.style.top= '-100px'">↑</button>
+        <button type="button" onclick="child.style.top= '25%'; child.style.left = '25%'">reset</button>
+      </p>
+      <ul>
+        <li>
+          상대적 위치 relative는 정적 위치 static을 기준으로 node를 이동 시킴
+        </li>
+        <li>상대적 위치로 이동한 node 객체는 다른 node에 영향을 주지 않음</li>
+      </ul>
+    </article>
+    <article>
+      <h2>position: absolute (절대적 위치)</h2>
+      <div id="parent2">
+        <div id="child2">absolute (부모 : static)</div>
+      </div>
+      <p>
+        <button type="button" onclick="child2.style.top = '100px'">↓</button>
+        <button type="button" onclick="child2.style.left = '-100px'">←</button>
+        <button type="button" onclick="child2.style.left = '100px'">→</button>
+        <button type="button" onclick="child2.style.top = '-100px'">↑</button>
+        <button type="button" onclick="child2.style.top= '0'; child2.style.left = '0'">reset</button>
+      </p>
+    </article>
+    </article>
+    <article>
+      <h2>position: absolute (절대적 위치)</h2>
+      <div id="parent3">
+        <div id="child3">absolute (부모 : relative)</div>
+      </div>
+      <p>
+        <button type="button" onclick="child3.style.top = '100px'">↓</button>
+        <button type="button" onclick="child3.style.left = '-100px'">←</button>
+        <button type="button" onclick="child3.style.left = '100px'">→</button>
+        <button type="button" onclick="child3.style.top= '-100px'">↑</button>
+        <button type="button" onclick="child3.style.top= '0'; child3.style.left = '0'">reset</button>
+      </p>
+      <ul>
+        <li>absolute는 조상 요소 중 relative, absolute, fixed가 정의 되어 있으면 그 조상을 기준으로 위치를 이동시킴</li>
+        <li>만약 부모, 조상 중에 relative, absolute, fixed가 없다면 body를 기준으로 위치가 조정됨</li>
+        <li>부유객체로 다른 요소를 밀거나 당기지않고 덮어쓰는 형태로 존재함</li>
+        <li>absolute로 정의된 node는 너비가 content에 맞게 지정되므로 너비를 지정하는 것이 좋음</li>
+      </ul>
+    </article>
+      <h2>position: fixed</h2>
+      <div id="parent4">
+        <div id="child4">fixed</div>
+      </div>
+      <ul>
+        <li>부모 요소와 아무런 상관없이 viewport(브라우저화면)를 기준으로 node 객체를 이동시킴</li>
+        <li>너비와 높이가 content에 맞게 변경됨</li>
+        <li>부유객체로 다른 node 객체를 덮음</li>
+      </ul>
+    </article>
+    </article>
+      <h2>position: sticky</h2>
+      <div id="parent5">
+        <div id="child5">sticky</div>
+      </div>
+    </article>
+  </body>
+</html>
