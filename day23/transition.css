@@ -1,0 +1,184 @@
+body {
+  text-align: center;
+}
+
+ul {
+  border: 3px solid #ccc;
+  width: 90%;
+  margin: 50px auto;
+  list-style: none;
+}
+
+article {
+  border: 3px solid #ccc;
+  width: 60%;
+  margin: 50px auto;
+}
+
+.box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  line-height: 70px;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  left: 0;
+  transition: background-color .5s ease-in-out, transform .5s ease, left .5s ease-in;
+}
+
+.container {
+  border: 5px solid #fff;
+  width: 40%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.active {
+  background-color: #ff0000;
+  font-size: 0;
+  transform:rotateY(180deg);
+  left: 85px;
+}
+
+.box2 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  left: 0;
+  font-size: 24px;
+  line-height: 150px;
+  transition: left 1s ease, background-color 1s ease;
+}
+
+.container2 {
+  border: 5px solid #fff;
+  width: 90%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.box2:active {
+  left: 73%;
+  background-color: #ff0000;
+}
+
+.box3 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  left: 0;
+  font-size: 24px;
+  line-height: 150px;
+  transition: left 1s ease-in, background-color 1s ease-in;
+}
+
+.container3 {
+  border: 5px solid #fff;
+  width: 90%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.box3:active {
+  left: 73%;
+  background-color: #ff0000;
+}
+
+.box4 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  left: 0;
+  font-size: 24px;
+  line-height: 150px;
+  transition: left 1s linear, background-color 1s linear;
+}
+
+.container4 {
+  border: 5px solid #fff;
+  width: 90%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.box4:active {
+  left: 73%;
+  background-color: #ff0000;
+}
+
+.box5 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  left: 0;
+  font-size: 24px;
+  line-height: 150px;
+  transition: left 1s ease-out, background-color 1s ease-out;
+}
+
+.container5 {
+  border: 5px solid #fff;
+  width: 90%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.box5:active {
+  left: 73%;
+  background-color: #ff0000;
+}
+
+.box6 {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #008000;
+  color: #fff;
+  left: 0;
+  font-size: 24px;
+  line-height: 150px;
+  transition: left 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+.container6 {
+  border: 5px solid #fff;
+  width: 90%;
+  margin: 50px auto;
+  background-color: #000;
+}
+
+.box6:active {
+  left: 73%;
+  background-color: #ff0000;
+}
+
+#containerPG {
+  border: 1px solid #ccc;
+  width: 60%;
+  margin: 10px auto;
+}
+
+#progressTest {
+  width: 0;
+  background-color: #ffe4c4;
+  color: #0000ff;
+  font-weight: bold;
+  transition: width 2s ease-in-out;
+}
+
+b {
+  color: #ff0000;
+}
+
