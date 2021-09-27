@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class extends</title>
+  </head>
+  <body>
+    <h1>class 상속으로 재사용을 배우자</h1>
+    <ul>
+      <li>상속은 부모의 타입(멤버)을 물려받는 것</li>
+      <li>상속 받았을 때 부모가 생성자를 작성한 경우 꼭!! 부모의 생성자를 호출해야한다.(super())</li>
+      <li>멤버의 이름은 중복될 수 없다.</li>
+      <li>get 멤버() 선언하면 멤버가 속성이 추가된다.(멤버로 한번 더 선언하면 안된다.)</li>
+      <li>예)class A{ name; get name(){};}(X)   class{ get name(){}}(O)</li>
+      <li>예)class A{ #name; get name(){};}(o)
+         자바스크립트에서 getter setter를 선언한 멤버는 private 한다.</li>
+      <li>부모의 함수를 재정의 하려면 함수에서 부모의 함수를 다시 호출해야한다.</li>
+    </ul>
+
+
+
+<script type="text/javascript">
+class Animal{
+  name;age;bark;species;
+  constructor(name,age=0,bark,species="밝혀지지않음"){
+    this.name=name;
+    this.bark=bark;
+    this.age=age;
+    this.species=species;
+  }
+  callName(){
+    alert(this.name);
+  }
+}
+//DOG는 Animal의 특징을 모두 가진다.
+//DOG는 털{길이:,색:,곱슬한정도:}과 주인[경민,은솜] 후각(100M)
+class Dog extends Animal{
+  //name;age;bark;species;
+  hair; owner; smell;
+  constructor(name,age,bark,species,hair,owner,smell){
+    super(name,age,bark,species);
+    this.hair=hair;
+    this.owner=owner;
+    this.smell=smell;
+  }
+}
+
+class Maltese extends Dog{
+  //전역 변수 이름과 get 멤버의 이름을 동일하게 작성하지 않기(get 멤버()가 무시당한다.)
+  //동일하게 작성하고 싶으면 꼭 private로 선언하세요.
+  #barking="자주"; #smelling="자주";
+  constructor(name,age,owner){
+    //super(name,age,bark,species,hair,owner,smell)
+    super(name,age,"말티즈멍멍멍","말티즈",{length:Infinity,color:"white",curly:"middle"},owner,500);
+  }
+  get barking(){
+    return this.#barking+" "+this.bark;
+  }
+  get smelling(){
+    return this.#smelling+" 킁킁"+this.smell+"M 맡을 수 있다.";
+  }
+  callName(){
+    //alert(name) 실행하고 alert(species) 실행
+    super.callName(); //생성자 처럼 부모의 함수를 다시 호출해야한다.(강제 X)
+    alert(this.species);
+  }
+}
+const dog= new Animal("홍구",10,"멍멍멍멍","말티즈");
+console.log(dog);
+const animal_dog=
+new Dog("홍구",10,"멍멍멍멍","말티즈",{length:20,color:"white",curly:"middle"},"경민",500);
+console.log(animal_dog);
+const hongu=new Maltese("홍구",10,["경민","은솜"]);
+console.log(hongu);
+hongu.callName();
+</script>
+  </body>
+</html>
+
+
+
+
+
+
+<!--  -->

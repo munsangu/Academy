@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class basic</title>
+  </head>
+  <body>
+    <h1>javascript class </h1>
+    <ul>
+      <!-- let a="안녕"; let a=new String("안녕");  기본데이터타입은 모두 리터럴한 방식을 채택
+          const b=[[],[]]; 배열, const c={a:"",b:3} 배열과 오브젝트도 리터럴한 방식 지원
+          function Person(){this.name; this.age;}=>new Person()=>{name:null,age:null}
+       -->
+      <li>클래스 class : 자동차를 조작=>
+         엑셀과 브레이크로 속도를 조작, 핸들로 방향을 조작, 직접 엔지에 기름(x)=> 캡슐화</li>
+      <li>new object()=>object={name:"최경민", age: 30}=>object={name:null, age: -1}</li>
+      <li>const arr=[1,2,3];(x 리터럴한 선언)=>new Array(1,2,3)(배열객체를 생성하는 실제방식 </li>
+      <li>class Person{name,age; constructor(n,a){ (n)?this.name=n:"이름없음"; (a>=0)this.age=a:0;}   }=>
+         new Person("",-1); => {name:"이름없음",age:0}
+      </li>
+      <li>class 를 선언하는 이유1(캡슐화):
+                                  사용할 객체를 사용하지 않는것과 분리(은닉),
+                                  사용하는 객체를 문제가 생기지 않도록 처리,
+                                  (속성)멤버변수를 선언하고 (행위)메서드를 선언하는 행위
+      </li>
+      <li>언어적 측면에서 접근 지정자에 의해 정의된 변수나 멤버 변수에 의해
+        오류가 발생할 것을 사전에 방지하는 행위(name=null 기계적 오류 X)</li>
+      <li>"최_경민".split("_"), null.split("_")=>오류</li>
+      <li>class 를 선언하는 이유2(재사용): 상속으로 class를 재사용 가능 </li>
+      <li>class 를 선언하는 이유3(유지보수):
+          선언되 class를 수정하면 참조하는 모든 class가 변경된다.(유지보수가 용이)
+      </li>
+      <li>class 의 단점1: 설계시 개발 속도를 느리게 한다.(개발자의 능력)</li>
+      <li>class 의 단점2: 객체가 많고 설계가 잘못되면 용량이 커진다.(개발자의 능력)</li>
+      <li>class 의 단점3: 자바스크립트는 class를 function의 대용품으로 사용중
+          함수가 클래스인 척 하고 있다.
+          (모든 브라우저에 동작X,자바스크립트에 대해 깊이있는 이해가 필요)
+      </li>
+
+<script>
+function Car(name,age){
+  this.n=name;
+  this.a=age;
+  let d="dd";
+  console.log("this:"+this);
+}
+
+console.log(new Car("aa",10));
+console.log(new Car());
+
+class Person{
+  //this.name;this.age; 클래스에서 this 생략
+  name="최경민";age=36;  // 클래스에서 생략가능
+  //Person 가장 가까운 자원 this
+  //=> this.name, this.age, this()==constructor() => new Person()
+  //모든 클래스는 생성자를 호출해야 객체를 생성할 수 있다.
+  //Person(n,a){}
+  constructor(n,a){
+    this.name=(n)?n:"이름없음";
+    this.age=(a>=0)?a:0;
+  }
+  //function setAge(){}
+  setAge(age){
+    (age>=0)?this.age=age:0;
+    //this("나이불명"); //자바스크립트에서는 클래스 내부에서 생성자 호출X
+    this.name="나이불명";
+  }
+}
+//function testName(name){return (name)? name: "이름없음";}
+//function testAge(age){return (age>=)? age: 0;}
+//const p={name:testName("이창영"),age:testAge(28)};
+const p =new Person("이창영",28);
+const p2 =new Person(null,-1);
+
+p.setAge(-3);
+console.log(p);
+console.log(p2);
+
+</script>
+
+
+    </ul>
+  </body>
+</html>

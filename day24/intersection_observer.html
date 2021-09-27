@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+<style media="screen">
+.box{
+ background-color: blue;
+ width: 500px;
+ height: 500px;
+ margin: auto;
+ transition: background 1s;
+}
+</style>
+  </head>
+  <body>
+    <h1>IntersectionObserver 로 화면에 노드가 나타나는 것을 확인하자</h1>
+    <p>let observer=new IntersectionObserver((enterties,obsereve)=>{},option)</p>
+    <p>observer.observe(element)=>elemet가 화면에 나타나는지 확인</p>
+    <div class="container">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div id="observeTest" class="box">
+      </div>
+      <br><br><br><br><br><br><br><br><br>
+    </div>
+  </body>
+<script>
+//enterties = 뷰포트에 나타난 복수의 노드 개체
+const observer=new IntersectionObserver((enterties)=>{
+  enterties.forEach((item, i) => {
+    if(item.isIntersecting){
+      item.target.style.background="red";
+    }
+  });
+},{threshold:1});
+
+observer.observe(observeTest);
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+</html>

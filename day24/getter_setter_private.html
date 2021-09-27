@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>class getter setter private</title>
+  </head>
+  <body>
+    <h1>class의 은닉을 위한 getter setter private</h1>
+    <ul>
+      <li>getter setter 는 프로그래머가 만든 약속이었다. (get멤버(){return 멤버})</li>
+      <li>은닉화된 전역변수(멤버,필드)를 필요한 부분만 드러내기위해 만들었다.</li>
+      <li>javascript에서 get 멤버(){return 멤버} getter 를 지원함 (호출시  객체.get멤버()=>객체.멤버 )</li>
+      <li>javascript에서 set 멤버(){this.멤버=멤버} setter 를 지원함</li>
+      <li>private(#): 은닉화된 전역변수로 클래스 내부에서만 참조가능하다.</li>
+      <li>public(default): 클래스 내부와 외부 모두에서 참조 가능하다.</li>
+    </ul>
+
+
+
+
+    <article class="">
+      <h2>AJAX로 로그인 하는 페이지가 해킹당하는 경우</h2>
+      <ul>
+        <li>1.해커가 유저의 컴퓨터에 접속중</li>
+        <li>2.해커가 유저가 사용중인 홈페이지의 JS 소스를 보는 중</li>
+        <li>3.해커는 유저가 ajax 로그인 성공을 확인</li>
+        <li>4.해커는 const user=new User(id,pw); 에 패스가 있는 것을 확인</li>
+        <li>4.해커가 브라우저에 console.log(user.password)</li>
+      </ul>
+    </article>
+    <article>
+      <form name="AJAXLogin">
+        <input type="text" name="id" value="">
+        <input type="password" name="pw" value="">
+        <button name="AJAXLoginBtn" type="button" name="button">
+          로그인
+        </button>
+      </form>
+    </article>
+<script>
+// class User{
+//   #id;#password;
+//   constructor(i,p){this.#id=i; this.#password=p;}
+//   scret(key){
+//     //암호화 코드
+//     return "sdfsdfsfd";
+//   }
+//   get password(){
+//     return this.scret(this.#password);
+//   }
+// }
+// const user;
+// AJAXLoginBtn.onclick=function(){
+//   user= new User(AJAXLogin.id.value, AJAXLogin.pw.value);
+//   new AJAXLogin(user); //return true 로그인 성공
+// }
+
+class Person{
+  //name; //멤버,필드,전역변수,속성
+  //__name; // 구식 이름 숨기기
+  #name; //private 식 필드 숨기기 => class 내부에서만 참조(enclosing class)
+  constructor(name="이름없음"){
+    this.#name=name;
+  }
+  //function getName(){return this.name+"님";}
+  getName(){return this.#name+"씨";}
+  //필드, 멤버 변수를 설정하고 호출하는 변수를 지원한다.
+  get name(){ //getter
+    return this.#name+"씨"
+  }
+  set name(name){//setter
+    this.name=name;
+  }
+
+}
+const p = new Person("이창영");
+console.log(p.name);
+//console.log(p.#name); //클래스 내부에서만 참조가능 (엔진 은닉 캡슐화)
+console.log(p.getName());//public 사용가능한 필드 (핸들,브레이크)
+</script>
+
+
+  </body>
+</html>
+
+
+
+
+
+<!--  -->
