@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation</title>
+    <style>
+      * {
+        text-align: center;
+      }
+      .container {
+        background-color: snow;
+        border: 1px solid snow;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .container2 {
+        background-color: snow;
+        border: 1px solid snow;
+        width: 100%;
+        height: 500px;
+        border-radius: 10px;
+      }
+
+      .box {
+        border: 1px;
+        background: green;
+        background-image: url("1.png");
+        background-position: center;
+        background-size: cover;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
+
+      button {
+        position: relative;
+        padding: 10px;
+        margin: 10px 50%;
+        width: 100px;
+        background-color: steelblue;
+        border: none;
+        border-radius: 20px;
+        color: white;
+      }
+
+      ul {
+        list-style: none;
+        border: 3px solid snow;
+        background-color: snow;
+        color: steelblue;
+      }
+
+      .move_color {
+        animation: moveColor 1.5s linear infinite;
+        animation-direction: reverse;
+      }
+
+      @keyframes moveColor {
+        0% {
+          background-color: red;
+          top: 5px;
+          left: 10px;
+        }
+        25% {
+          background-color: green;
+          top: -10px;
+          left: calc(25% - 100px);
+          border-radius: 20%;
+          transform: scale(0.7) rotate(90deg);
+        }
+        50% {
+          background-color: blue;
+          top: -15px;
+          left: calc(50% - 100px);
+          border-radius: 30%;
+          transform: scale(0.5) rotate(180deg);
+        }
+        75% {
+          background-color: yellow;
+          top: -10px;
+          left: calc(100% - 100px);
+          border-radius: 40%;
+          transform: scale(0.1) rotate(270deg);
+        }
+        100% {
+          background-color: skyblue;
+          top: 5px;
+          left: 10px;
+          border-radius: 50%;
+          transform: scale(2) rotate(360deg);
+        }
+      }
+
+      .box.turn_move {
+        animation-name: turnMove;
+        animation-duration: 2s;
+        animation-delay: 1s;
+      }
+
+      .fill_none {
+        animation-fill-mode: none;
+      }
+
+      .fill_forwards {
+        animation-fill-mode: forwards;
+      }
+
+      .fill_backwards {
+        animation-fill-mode: backwards;
+      }
+
+      .fill_both {
+        animation-fill-mode: both;
+      }
+
+      @keyframes turnMove {
+        from {
+          right: 50px;
+          transform: rotate(90deg);
+        }
+        to {
+          left: calc(100% - 100px);
+          transform: rotate(360deg);
+        }
+      }
+
+      .around_box {
+        border-radius: 50%;
+        background-color: #ff7b00;
+        background-size: 50px;
+        background-repeat: no-repeat;
+        animation-name: aroundBox;
+        animation-duration: 3s;
+        animation-delay: 1s;
+        animation-direction: normal;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes aroundBox {
+        0% {
+          top: 0;
+          left: 0;
+        }
+        25% {
+          top: 0;
+          left: calc(100% - 100px);
+        }
+        50% {
+          top: calc(100% - 100px);
+          left: calc(100% - 100px);
+        }
+        75% {
+          top: calc(100% - 100px);
+          left: 0;
+        }
+        100% {
+          top: 0;
+          left: 0;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>CSS로 복잡한 animation 만들기</h1>
+    <div class="container">
+      <div class="box move_color"></div>
+    </div>
+    <button id="ani_control">On / Off</button>
+    <h2>
+      animation은 javscript의 setInterval로 만드는 동작을 간단하게 작성가능
+    </h2>
+    <ul>
+      <li>animation: 모든 property를 작성</li>
+      <li>
+        animation-name: @keyframes의 이름을 지정<br />
+        <small>
+          -> (이벤트로 animation을 등록할 때 해당 요소에 animation-name을
+          추가하면 됨) / (동작이 안될 경우 class 추가)</small
+        >
+      </li>
+      <li>@keyframes -> animation이 동작하는 단계를 나눠서 설정</li>
+      <li>animation-duration: 한 싸이클의 animation이 소요되는 시간</li>
+      <li>animation-timing-function: animation의 속도를 나타내는 함수</li>
+      <li>animation-delay: 요소가 시작될 시점</li>
+      <li>animation-literation-count: animation의 재생 횟수</li>
+      <li>animation-play-state: animation의 재생 상태를 지정</li>
+      <li>
+        animation-direction: {normal: from(0) ~ to(100%), reverse: to ~ from,
+        alternate: 홀수번째는 normal 짝수번째는 reverse, alternate-reverse:
+        alternate의 반대}
+      </li>
+      <li>
+        animation-fill-mode:
+        <ul style="border: 2px solid">
+          <li>
+            none: 시작점에서 keyframes 0%에 적용된 스타일을 적용하지 않고
+            대기<br />animation이 종료되면 원래 상태로 되돌리고 종료
+          </li>
+          <li>
+            forwards: none과 시작은 같고 animation이 종료되면 그 상태 그대로
+            종료
+          </li>
+          <li>
+            backwards: 시작점에서 from에 적용된 스타일을 적용하고 대기, none과
+            종료가 같음
+          </li>
+          <li>both: 시작은 backwards와 같고, 종료는 forwards와 같음</li>
+        </ul>
+      </li>
+    </ul>
+    <hr />
+    <div class="container">
+      <h2>move-fill-none</h2>
+      <div class="box turn_move fill_none"></div>
+    </div>
+    <hr />
+    <div class="container">
+      <h2>move-fill-forwards</h2>
+      <div class="box turn_move fill_forwards"></div>
+    </div>
+    <hr />
+    <div class="container">
+      <h2>move-fill-backwards</h2>
+      <div class="box turn_move fill_backwards"></div>
+    </div>
+    <hr />
+    <div class="container">
+      <h2>move-fill-both</h2>
+      <div class="box turn_move fill_both"></div>
+    </div>
+    <hr>
+    <h2>move around box</h2>
+    animation-direction:
+    <select>
+      <option value="normal">normal</option>
+      <option value="reverse">reverse</option>
+      <option value="alternate">alternate</option>
+      <option value="alternate-reverse">alternate-reverse</option>
+    </select>
+    <div class="container2">
+      <div class="box around_box" id="aroundBox"></div>
+    </div>
+  </body>
+  <script>
+    const moveColor = document.querySelector(".move_color");
+    const selectDirection = document.querySelector("select");
+    
+    selectDirection.addEventListener("change", () => {
+      aroundBox.style.animationDirection = selectDirection.value;
+    })
+
+    ani_control.addEventListener("click", () => {
+      moveColor.classList.toggle("move_color");
+    });
+  </script>
+</html>

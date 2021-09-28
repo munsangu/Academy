@@ -29,6 +29,15 @@
   </body>
 <script>
 //enterties = 뷰포트에 나타난 복수의 노드 개체
+function ObserverOption(root=null, rootMargin="0", threshold=0) {
+  this.root = root;
+  this.rootMargin = rootMargin;
+  this.threshold = threshold;
+}
+let option = new ObserverOption(null, "20px 0", 0.5 );
+
+console.log(option);
+
 const observer=new IntersectionObserver((enterties)=>{
   enterties.forEach((item, i) => {
     if(item.isIntersecting){
@@ -38,21 +47,5 @@ const observer=new IntersectionObserver((enterties)=>{
 },{threshold:1});
 
 observer.observe(observeTest);
-
-
-
-
-
-
-
-
 </script>
-
-
-
-
-
-
-
-
 </html>
